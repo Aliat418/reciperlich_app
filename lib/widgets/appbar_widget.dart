@@ -19,7 +19,7 @@ class AppbarWidget extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: AppColors.darkPurple,
+      backgroundColor: AppColors.goldYellow,
       expandedHeight: 200,
       elevation: 0,
       pinned: true,

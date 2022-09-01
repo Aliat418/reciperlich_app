@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -6,7 +8,7 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Text('Made with love by raywendelich.com'),
+      Text('Made with ❤️ by raywendelich.com'),
       SizedBox(height: 45)
     ]);
   }

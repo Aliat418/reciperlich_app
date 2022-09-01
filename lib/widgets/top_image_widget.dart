@@ -20,7 +20,7 @@ class TopImageWidget extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [AppColors.brightGreen, Colors.transparent],
+              colors: [AppColors.goldYellow, Colors.transparent],
             ),
           ),
         ),
