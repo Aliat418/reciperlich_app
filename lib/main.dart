@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'home/main_food_page.dart';
 
 void main() => runApp(const ReciperlichApp());
@@ -13,7 +12,14 @@ class ReciperlichApp extends StatelessWidget {
       title: 'ReciperlichApp',
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      home: const MainFoodPage(),
+      home: MainFoodPage(),
     );
   }
 }
+
+
+
+// theme: ThemeData.light().copyWith(
+      //   primaryColor: Colors.purple,
+      //   colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
+      // ),???

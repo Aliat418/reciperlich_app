@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//color palette unfinished...using test colors
+
 class AppColors {
   // static const Color lightYellow = Color(0xFFfff84c);
   static const Color lightBlue = Color(0xFFB5E6EC);
@@ -20,4 +22,16 @@ class AppColors {
   static const Color mediumOrange = Color(0xFFFDA63A);
   static const Color lightGreen = Color(0xFFddff77);
   static const Color mediumRed = Color.fromARGB(255, 239, 246, 201);
+
+  //pastel palette
+
+  static const Color pastelBlue = Color.fromARGB(138, 168, 230, 193);
+  static const Color pastelGreen = Color.fromARGB(175, 220, 237, 193);
+  static const Color pastelOrange = Color.fromARGB(156, 255, 211, 193);
+  static const Color pastelPink = Color(0xFFffaaa5);
+  static const Color pastelBrightPink = Color(0xFFff8b94);
+
+  static const Color newYellow = Color.fromARGB(255, 235, 216, 71);
+
+  //
 }

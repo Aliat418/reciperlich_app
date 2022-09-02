@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reciperlich_app/utils/colors.dart';
+import 'package:reciperlich_app/utils/images.dart';
 
 class TopImageWidget extends StatelessWidget {
   final Image image;
@@ -11,10 +12,7 @@ class TopImageWidget extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.asset(
-          'assets/images/sweetsFont.jpg',
-          fit: BoxFit.cover,
-        ),
+        AppImages.appBarImage,
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

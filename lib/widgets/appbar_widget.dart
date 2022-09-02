@@ -27,7 +27,5 @@ class AppbarWidget extends StatelessWidget {
         background: TopImageWidget(image),
       ),
     );
-    //background:
-    //AssetImage('assets/images/pizza.png'),
   }
 }
