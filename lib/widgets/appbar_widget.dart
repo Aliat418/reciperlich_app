@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/utils/colors.dart';
+import 'package:reciperlich_app/theme/colors.dart';
 import 'package:reciperlich_app/widgets/top_image_widget.dart';
 
 class AppbarWidget extends StatelessWidget {
@@ -19,7 +19,7 @@ class AppbarWidget extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: AppColors.goldYellow,
+      backgroundColor: AppColors.pastelPink,
       expandedHeight: 200,
       elevation: 0,
       pinned: true,

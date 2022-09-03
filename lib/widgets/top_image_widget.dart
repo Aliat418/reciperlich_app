@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/utils/colors.dart';
-import 'package:reciperlich_app/utils/images.dart';
+import 'package:reciperlich_app/theme/colors.dart';
+import 'package:reciperlich_app/resources/images.dart';
 
 class TopImageWidget extends StatelessWidget {
   final Image image;
@@ -18,7 +18,10 @@ class TopImageWidget extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [AppColors.goldYellow, Colors.transparent],
+              colors: [
+                AppColors.pastelPink,
+                Colors.transparent,
+              ],
             ),
           ),
         ),

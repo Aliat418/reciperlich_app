@@ -16,10 +16,3 @@ class ReciperlichApp extends StatelessWidget {
     );
   }
 }
-
-
-
-// theme: ThemeData.light().copyWith(
-      //   primaryColor: Colors.purple,
-      //   colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
-      // ),???

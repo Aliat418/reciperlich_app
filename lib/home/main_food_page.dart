@@ -1,15 +1,14 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/dishes_repository.dart';
-import 'package:reciperlich_app/utils/images.dart';
+import 'package:reciperlich_app/data/dishes_repository.dart';
+import 'package:reciperlich_app/resources/images.dart';
 import 'package:reciperlich_app/widgets/appbar_widget.dart';
-import 'package:reciperlich_app/widgets/dish_widget.dart';
+import 'package:reciperlich_app/widgets/dish_view_widget.dart';
 import '../widgets/footer_widget.dart';
 
 class MainFoodPage extends StatelessWidget {
   MainFoodPage({Key? key}) : super(key: key);
-  final dish = DishReposiyory.getDish();
+  final dish = DishRepository.getDish();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,20 +19,21 @@ class MainFoodPage extends StatelessWidget {
             text: 'Reciperlich',
           ),
           SliverPadding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             sliver: SliverFixedExtentList(
               itemExtent: 115,
               delegate: SliverChildBuilderDelegate(
                 (context, index) => Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                    child: Dish(dish[index])),
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: DishView(dish[index]),
+                ),
                 childCount: dish.length,
               ),
             ),
           ),
           const SliverToBoxAdapter(
             child: FooterWidget(),
-          )
+          ),
         ],
       ),
     );

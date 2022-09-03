@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class AppbarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     throw UnimplementedError();
   }
 
@@ -17,5 +20,3 @@ class AppbarDelegate extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
       true;
 }
-
-//???
