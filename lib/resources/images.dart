@@ -12,4 +12,11 @@ class AppImages {
     'assets/images/main-background.jpg',
     fit: BoxFit.cover,
   );
+
+  static Image pizzaDish = Image.asset('assets/images/pizza_dish.jpg');
+  static Image noodlesDish = Image.asset('assets/images/noodles_dish.jpg');
+  static Image pancakeDish = Image.asset('assets/images/pancakes_dish.jpg');
+  static Image spaghettiDish = Image.asset('assets/images/spag_dish.jpg');
+  static Image sushiDish = Image.asset('assets/images/sushi_dish.jpg');
+  static Image tacoDish = Image.asset('assets/images/taco_dish.jpg');
 }

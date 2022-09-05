@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home/main_food_page.dart';
+import 'package:reciperlich_app/pages/main_food_page.dart';
 
-void main() => runApp(const ReciperlichApp());
+void main() => runApp(ReciperlichApp());
 
 class ReciperlichApp extends StatelessWidget {
   const ReciperlichApp({Key? key}) : super(key: key);
