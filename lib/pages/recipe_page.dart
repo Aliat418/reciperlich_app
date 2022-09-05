@@ -3,7 +3,7 @@ import 'package:reciperlich_app/theme/colors.dart';
 import 'package:reciperlich_app/widgets/footer_widget.dart';
 import '../model/dish.dart';
 import '../resources/recipe_image_widget.dart';
-import '../widgets/recipe-instructions_widget.dart';
+import '../widgets/recipe_instructions_widget.dart';
 import '../widgets/recipe_ingredients_widget.dart';
 import '../widgets/recipe_title_widget.dart';
 import 'main_food_page.dart';
