@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color darkGreen = Color(0xFF158442);
-  static const Color darkPurple = Color(0xFF3a0956);
-  static const Color mediumPurple = Color(0xFF50196f);
+  static const Color darkPurple = Color(0xFF3A0956);
+  static const Color mediumPurple = Color(0xFF50196F);
   static const Color goldYellow = Color(0xFFFFCF86);
-  static const Color pastelBlue = Color.fromARGB(138, 168, 230, 193);
-  static const Color pastelGreen = Color.fromARGB(175, 220, 237, 193);
-  static const Color pastelOrange = Color.fromARGB(156, 255, 211, 193);
-  static const Color pastelPink = Color(0xFFffaaa5);
+  static const Color pastelBlue = Color(0x8AA8E6C1);
+  static const Color pastelGreen = Color(0x8ADCEDC1);
+  static const Color pastelOrange = Color(0x8AFFD3C1);
+  static const Color pastelPink = Color(0xFFffAAA5);
 }

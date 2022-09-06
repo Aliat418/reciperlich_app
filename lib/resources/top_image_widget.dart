@@ -5,7 +5,10 @@ import 'package:reciperlich_app/resources/images.dart';
 class TopImageWidget extends StatelessWidget {
   final Image image;
 
-  const TopImageWidget(this.image, {Key? key}) : super(key: key);
+  const TopImageWidget(
+    this.image, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

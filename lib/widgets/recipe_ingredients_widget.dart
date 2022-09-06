@@ -5,7 +5,7 @@ import '../theme/fonts.dart';
 
 class IngredientsWidget extends StatelessWidget {
   final Dish dish;
-  final instructions = DishRepository.getDish();
+  final instructions = DishRepository.getDishes();
   IngredientsWidget({
     Key? key,
     required this.dish,

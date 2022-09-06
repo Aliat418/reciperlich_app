@@ -6,7 +6,7 @@ import 'package:reciperlich_app/widgets/dish_view_widget.dart';
 import '../widgets/footer_widget.dart';
 
 class MainFoodPage extends StatelessWidget {
-  final dish = DishRepository.getDish();
+  final dish = DishRepository.getDishes();
 
   MainFoodPage({Key? key}) : super(key: key);
 

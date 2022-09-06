@@ -4,7 +4,7 @@ import '../model/dish.dart';
 
 class RecipeImageWidget extends StatelessWidget {
   final Dish dish;
-  final dishImage = DishRepository.getDish();
+  final dishImage = DishRepository.getDishes();
 
   RecipeImageWidget({
     Key? key,

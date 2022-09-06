@@ -3,7 +3,7 @@ import 'package:reciperlich_app/theme/colors.dart';
 import 'package:reciperlich_app/resources/images.dart';
 
 class DishRepository {
-  static List<Dish> getDish() => [
+  static List<Dish> getDishes() => [
         Dish(
           title: 'Pizza margherita',
           purchasePlace: 'Dominos Pizza',
