@@ -16,7 +16,7 @@ linter:
     - always_put_required_named_parameters_first
     - always_require_non_null_named_parameters
     # - always_specify_types 
-    - always_use_package_imports
+    # - always_use_package_imports
     - annotate_overrides
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
@@ -72,7 +72,7 @@ linter:
     - depend_on_referenced_packages
     - deprecated_consistency
     # - diagnostic_describe_all_properties
-    - directives_ordering
+    # - directives_ordering
     - do_not_use_environment
     - empty_catches
     - empty_constructor_bodies
@@ -160,8 +160,8 @@ linter:
     - sized_box_shrink_expand
     - slash_for_doc_comments
     - sort_child_properties_last
-    - sort_constructors_first
-    - sort_pub_dependencies
+    # - sort_constructors_first
+    # - sort_pub_dependencies
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
