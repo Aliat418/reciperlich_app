@@ -8,10 +8,7 @@ class AppImages {
   static Image spaghetti = Image.asset('assets/images/spaghetti.png');
   static Image taco = Image.asset('assets/images/taco.png');
 
-  static Image appBarImage = Image.asset(
-    'assets/images/main-background.jpg',
-    fit: BoxFit.cover,
-  );
+  static Image appBarImage = Image.asset('assets/images/main-background.jpg');
 
   static Image pizzaDish = Image.asset('assets/images/pizza_dish.jpg');
   static Image noodlesDish = Image.asset('assets/images/noodles_dish.jpg');

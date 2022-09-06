@@ -6,8 +6,11 @@ class AppbarWidget extends StatelessWidget {
   final Image image;
   final String text;
 
-  const AppbarWidget({Key? key, required this.image, required this.text})
-      : super(key: key);
+  const AppbarWidget({
+    Key? key,
+    required this.image,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

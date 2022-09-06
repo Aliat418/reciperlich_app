@@ -5,17 +5,17 @@ class Dish {
   final String purchasePlace;
   final Image image;
   final Color dishColor;
-  final Image dishImage;
   final String ingredients;
   final String instructions;
+  final Image dishImage;
 
-  Dish(
-    this.title,
-    this.purchasePlace,
-    this.image,
-    this.dishColor,
-    this.ingredients,
-    this.instructions,
-    this.dishImage,
-  );
+  const Dish({
+    required this.title,
+    required this.purchasePlace,
+    required this.image,
+    required this.dishColor,
+    required this.ingredients,
+    required this.instructions,
+    required this.dishImage,
+  });
 }

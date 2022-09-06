@@ -79,7 +79,7 @@ class IngredientsText extends StatelessWidget {
       style: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.normal,
-        color: Color.fromARGB(255, 87, 89, 134),
+        color: AppColors.mediumPurple,
       ),
     );
   }

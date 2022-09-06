@@ -6,7 +6,10 @@ import '../theme/fonts.dart';
 class IngredientsWidget extends StatelessWidget {
   final Dish dish;
   final instructions = DishRepository.getDish();
-  IngredientsWidget({Key? key, required this.dish}) : super(key: key);
+  IngredientsWidget({
+    Key? key,
+    required this.dish,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

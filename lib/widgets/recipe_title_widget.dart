@@ -5,7 +5,10 @@ import '../theme/fonts.dart';
 class TitleWidget extends StatelessWidget {
   final Dish dish;
 
-  const TitleWidget({Key? key, required this.dish}) : super(key: key);
+  const TitleWidget({
+    Key? key,
+    required this.dish,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

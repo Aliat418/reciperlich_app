@@ -12,7 +12,10 @@ class TopImageWidget extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        AppImages.appBarImage,
+        FittedBox(
+          child: AppImages.appBarImage,
+          fit: BoxFit.cover,
+        ),
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
