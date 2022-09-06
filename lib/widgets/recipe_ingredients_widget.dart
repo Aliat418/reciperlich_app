@@ -7,16 +7,15 @@ class IngredientsWidget extends StatelessWidget {
   final Dish dish;
   final instructions = DishRepository.getDishes();
   IngredientsWidget({
-    Key? key,
     required this.dish,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(

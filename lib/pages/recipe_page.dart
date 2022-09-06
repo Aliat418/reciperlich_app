@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/theme/colors.dart';
-import 'package:reciperlich_app/widgets/footer_widget.dart';
+import '../theme/colors.dart';
+import '../widgets/footer_widget.dart';
 import '../model/dish.dart';
 import '../resources/recipe_image_widget.dart';
 import '../widgets/recipe_instructions_widget.dart';
@@ -11,9 +11,9 @@ class RecipePage extends StatelessWidget {
   final Dish dish;
 
   const RecipePage({
-    Key? key,
     required this.dish,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/pages/main_food_page.dart';
+import 'pages/main_food_page.dart';
 
-void main() => runApp(ReciperlichApp());
+void main() => runApp(const ReciperlichApp());
 
 class ReciperlichApp extends StatelessWidget {
-  const ReciperlichApp({Key? key}) : super(key: key);
+  const ReciperlichApp({super.key});
 
   @override
   Widget build(BuildContext context) {

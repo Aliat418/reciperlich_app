@@ -4,10 +4,10 @@ import '../model/dish.dart';
 class RecipeImageWidget extends StatelessWidget {
   final Dish dish;
 
-  RecipeImageWidget({
-    Key? key,
+  const RecipeImageWidget({
     required this.dish,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

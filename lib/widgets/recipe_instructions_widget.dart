@@ -8,16 +8,15 @@ class InstructionsWidget extends StatelessWidget {
   final Dish dish;
 
   InstructionsWidget({
-    Key? key,
     required this.dish,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(

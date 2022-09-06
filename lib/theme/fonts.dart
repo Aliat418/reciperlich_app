@@ -4,10 +4,10 @@ import 'colors.dart';
 class TitleText extends StatelessWidget {
   final String text;
 
-  TitleText({
-    Key? key,
+  const TitleText({
     required this.text,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class TitleText extends StatelessWidget {
 class DescriptionText extends StatelessWidget {
   final String text;
 
-  DescriptionText({
-    Key? key,
+  const DescriptionText({
     required this.text,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +46,10 @@ class DescriptionText extends StatelessWidget {
 class DishTitleText extends StatelessWidget {
   final String text;
 
-  DishTitleText({
-    Key? key,
+  const DishTitleText({
     required this.text,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +67,10 @@ class DishTitleText extends StatelessWidget {
 class IngredientsText extends StatelessWidget {
   final String text;
 
-  IngredientsText({
-    Key? key,
+  const IngredientsText({
     required this.text,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -88,10 +88,10 @@ class IngredientsText extends StatelessWidget {
 class InstructionsText extends StatelessWidget {
   final String text;
 
-  InstructionsText({
-    Key? key,
+  const InstructionsText({
     required this.text,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

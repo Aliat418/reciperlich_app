@@ -6,9 +6,9 @@ class TitleWidget extends StatelessWidget {
   final Dish dish;
 
   const TitleWidget({
-    Key? key,
     required this.dish,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,6 @@ class TitleWidget extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       color: dish.dishColor,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TitleText(text: dish.title),

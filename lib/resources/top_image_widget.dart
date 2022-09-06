@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/theme/colors.dart';
+import '../theme/colors.dart';
 
 class TopImageWidget extends StatelessWidget {
   final String image;
 
   const TopImageWidget(
     this.image, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,11 @@ class TopImageWidget extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         FittedBox(
-          child: Image.asset(image),
           fit: BoxFit.cover,
+          child: Image.asset(image),
         ),
-        Container(
-          decoration: const BoxDecoration(
+        const DecoratedBox(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,

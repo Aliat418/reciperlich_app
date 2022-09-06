@@ -8,8 +8,8 @@ class DishView extends StatelessWidget {
 
   const DishView(
     this.dish, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,6 @@ class DishView extends StatelessWidget {
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
                   child: Column(

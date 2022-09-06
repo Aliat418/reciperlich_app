@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/theme/colors.dart';
+import '../theme/colors.dart';
 
 class FooterWidget extends StatelessWidget {
-  const FooterWidget({Key? key}) : super(key: key);
+  const FooterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
