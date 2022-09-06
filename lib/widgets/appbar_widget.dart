@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:reciperlich_app/theme/colors.dart';
-import 'package:reciperlich_app/widgets/top_image_widget.dart';
+import 'package:reciperlich_app/resources/top_image_widget.dart';
 
 class AppbarWidget extends StatelessWidget {
-  final Image image;
+  final String image;
   final String text;
 
-  const AppbarWidget({Key? key, required this.image, required this.text})
-      : super(key: key);
+  const AppbarWidget({
+    Key? key,
+    required this.image,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reciperlich_app/model/dish.dart';
-import 'package:reciperlich_app/theme/colors.dart';
+import 'package:reciperlich_app/theme/fonts.dart';
+import '../pages/recipe_page.dart';
 
 class DishView extends StatelessWidget {
   final Dish dish;
@@ -12,50 +13,49 @@ class DishView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          decoration: BoxDecoration(
-            color: dish.dishColor,
-            borderRadius: const BorderRadius.all(
-              Radius.elliptical(15, 15),
+    return InkWell(
+      onTap: () => _navigateToDishPage(context),
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+              color: dish.dishColor,
+              borderRadius: const BorderRadius.all(
+                Radius.elliptical(15, 15),
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TitleText(text: dish.title),
+                      const SizedBox(height: 5),
+                      DescriptionText(text: dish.purchasePlace),
+                    ],
+                  ),
+                ),
+                Image.asset(dish.image),
+              ],
             ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      dish.title,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.darkPurple,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      dish.purchasePlace,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: AppColors.darkPurple,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              dish.image,
-            ],
-          ),
+        ],
+      ),
+    );
+  }
+
+  void _navigateToDishPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => RecipePage(
+          dish: dish,
         ),
-      ],
+      ),
     );
   }
 }
