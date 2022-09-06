@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class Dish {
   final String title;
   final String purchasePlace;
-  final Image image;
+  final String image;
   final Color dishColor;
   final String ingredients;
   final String instructions;
-  final Image dishImage;
+  final String dishImage;
 
   const Dish({
     required this.title,

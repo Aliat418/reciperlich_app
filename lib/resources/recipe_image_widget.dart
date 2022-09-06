@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 
 class RecipeImageWidget extends StatelessWidget {
   final Dish dish;
-  final dishImage = DishRepository.getDishes();
 
   RecipeImageWidget({
     Key? key,
@@ -15,7 +13,7 @@ class RecipeImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        dish.dishImage,
+        Image.asset(dish.dishImage),
       ],
     );
   }

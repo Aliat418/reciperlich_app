@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reciperlich_app/theme/colors.dart';
-import 'package:reciperlich_app/resources/images.dart';
 
 class TopImageWidget extends StatelessWidget {
-  final Image image;
+  final String image;
 
   const TopImageWidget(
     this.image, {
@@ -16,7 +15,7 @@ class TopImageWidget extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         FittedBox(
-          child: AppImages.appBarImage,
+          child: Image.asset(image),
           fit: BoxFit.cover,
         ),
         Container(

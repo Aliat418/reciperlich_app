@@ -40,7 +40,7 @@ class DishView extends StatelessWidget {
                     ],
                   ),
                 ),
-                dish.image,
+                Image.asset(dish.image),
               ],
             ),
           ),

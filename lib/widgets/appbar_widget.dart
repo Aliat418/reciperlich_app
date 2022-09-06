@@ -3,7 +3,7 @@ import 'package:reciperlich_app/theme/colors.dart';
 import 'package:reciperlich_app/resources/top_image_widget.dart';
 
 class AppbarWidget extends StatelessWidget {
-  final Image image;
+  final String image;
   final String text;
 
   const AppbarWidget({
