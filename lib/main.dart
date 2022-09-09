@@ -23,11 +23,11 @@ class ReciperlichApp extends StatelessWidget {
       },
       onGenerateRoute: (settings) {
         if (settings.name == RecipePage.routeName) {
-          final arguments = settings.arguments! as Dish;
+          final dish = settings.arguments! as Dish;
           return MaterialPageRoute(
             builder: (context) {
               return RecipePage(
-                dish: arguments,
+                dish: dish,
               );
             },
           );
