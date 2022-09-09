@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
-import '../pages/recipe_page.dart';
-import '../theme/colors.dart';
 import '../theme/fonts.dart';
-import 'recipe_title_widget.dart';
 
 class DishView extends StatelessWidget {
   final Dish dish;
-  // static const routeName = '/dishview';
 
   const DishView(
     this.dish, {

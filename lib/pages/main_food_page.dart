@@ -54,12 +54,4 @@ class MainFoodPage extends StatelessWidget {
       ),
     );
   }
-
-  // void _navigateToAddRecipePage(BuildContext context) {
-  //   Navigator.of(context).push(
-  //     MaterialPageRoute(
-  //       builder: (context) => const AddRecipePage(),
-  //     ),
-  //   );
-  // }
 }
