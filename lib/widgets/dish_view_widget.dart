@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reciperlich_app/model/dish.dart';
-import 'package:reciperlich_app/theme/fonts.dart';
-import '../pages/recipe_page.dart';
+
+import '../model/dish.dart';
+import '../theme/fonts.dart';
 
 class DishView extends StatelessWidget {
   final Dish dish;
@@ -14,7 +14,11 @@ class DishView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _navigateToDishPage(context),
+      onTap: () => //_navigateToRecipePage // works with this!
+          Navigator.pushNamed(
+        context,
+        '/recipe page',
+      ),
       child: Stack(
         children: [
           Container(
@@ -48,13 +52,13 @@ class DishView extends StatelessWidget {
     );
   }
 
-  void _navigateToDishPage(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => RecipePage(
-          dish: dish,
-        ),
-      ),
-    );
-  }
+  // void _navigateToRecipePage(BuildContext context) {
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) => RecipePage(
+  //         dish: dish,
+  //       ),
+  //     ),
+  //   );
+  // }
 }

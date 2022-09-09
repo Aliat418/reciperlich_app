@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+
 import '../data/dishes_repository.dart';
 import '../resources/images.dart';
+import '../theme/colors.dart';
 import '../widgets/appbar_widget.dart';
 import '../widgets/dish_view_widget.dart';
 import '../widgets/footer_widget.dart';
 
 class MainFoodPage extends StatelessWidget {
   final dish = DishRepository.getDishes();
+  static const routeName = '/main food page';
 
   MainFoodPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.pastelPink,
+        elevation: 3,
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/add recipe page',
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           const AppbarWidget(
@@ -39,4 +54,12 @@ class MainFoodPage extends StatelessWidget {
       ),
     );
   }
+
+  // void _navigateToAddRecipePage(BuildContext context) {
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) => const AddRecipePage(),
+  //     ),
+  //   );
+  // }
 }

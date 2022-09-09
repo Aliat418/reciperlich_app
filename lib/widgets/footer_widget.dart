@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/colors.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -7,6 +8,7 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RichText(
           text: const TextSpan(
@@ -18,7 +20,7 @@ class FooterWidget extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: 'raywendelich.com',
+                text: 'abrahadabra.ton',
                 style: TextStyle(
                   color: AppColors.darkGreen,
                   fontStyle: FontStyle.italic,
@@ -27,7 +29,9 @@ class FooterWidget extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 45)
+        const SizedBox(
+          height: 45,
+        )
       ],
     );
   }

@@ -81,6 +81,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.5"
+  keyboard_actions:
+    dependency: "direct main"
+    description:
+      name: keyboard_actions
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   lints:
     dependency: transitive
     description:

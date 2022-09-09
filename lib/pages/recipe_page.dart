@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/colors.dart';
 import '../widgets/footer_widget.dart';
 import '../model/dish.dart';
@@ -9,6 +10,7 @@ import '../widgets/recipe_title_widget.dart';
 
 class RecipePage extends StatelessWidget {
   final Dish dish;
+  static const routeName = '/recipe page';
 
   const RecipePage({
     required this.dish,
@@ -22,7 +24,10 @@ class RecipePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
         onPressed: () {
-          Navigator.of(context).pop();
+          Navigator.pushNamed(
+            context,
+            '/main food page',
+          );
         },
         child: const Icon(Icons.arrow_back),
       ),
