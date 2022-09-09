@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'model/dish.dart';
 import 'pages/add_recipe_page.dart';
 import 'pages/main_food_page.dart';
 import 'pages/recipe_page.dart';
@@ -17,22 +18,21 @@ class ReciperlichApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MainFoodPage(),
       routes: {
-        MainFoodPage.routeName: (context) => MainFoodPage(),
+        //MainFoodPage.routeName: (context) => MainFoodPage(),
         AddRecipePage.routeName: (context) => const AddRecipePage(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == RecipePage.routeName) {
-          final arguments = settings.arguments! as RecipePage;
+          final arguments = settings.arguments! as Dish;
           return MaterialPageRoute(
             builder: (context) {
               return RecipePage(
-                dish: arguments.dish,
+                dish: arguments,
               );
             },
           );
         }
-        assert(false, 'Need to implement recipe page arguments');
-
+        // assert(false, 'Need to implement recipe page arguments');
         return null;
       },
     );

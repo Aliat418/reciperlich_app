@@ -6,7 +6,7 @@ import '../theme/colors.dart';
 import '../widgets/footer_widget.dart';
 
 class AddRecipePage extends StatefulWidget {
-  static const routeName = '/add recipe page';
+  static const routeName = '/add_recipe_page';
   const AddRecipePage({super.key});
 
   @override
@@ -22,16 +22,14 @@ class _AddRecipePageState extends State<AddRecipePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.pastelPink,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
         onPressed: () {
-          Navigator.pushNamed(
-            context,
-            '/main food page',
-          );
+          Navigator.pop(context);
         },
         child: const Icon(Icons.arrow_back),
       ),

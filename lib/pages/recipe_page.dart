@@ -10,7 +10,7 @@ import '../widgets/recipe_title_widget.dart';
 
 class RecipePage extends StatelessWidget {
   final Dish dish;
-  static const routeName = '/recipe page';
+  static const routeName = '/recipe_page';
 
   const RecipePage({
     required this.dish,
@@ -24,10 +24,7 @@ class RecipePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
         onPressed: () {
-          Navigator.pushNamed(
-            context,
-            '/main food page',
-          );
+          Navigator.pop(context);
         },
         child: const Icon(Icons.arrow_back),
       ),

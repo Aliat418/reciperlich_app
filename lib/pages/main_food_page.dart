@@ -9,7 +9,7 @@ import '../widgets/footer_widget.dart';
 
 class MainFoodPage extends StatelessWidget {
   final dish = DishRepository.getDishes();
-  static const routeName = '/main food page';
+  static const routeName = '/main_food_page';
 
   MainFoodPage({super.key});
 
@@ -23,7 +23,7 @@ class MainFoodPage extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(
             context,
-            '/add recipe page',
+            '/add_recipe_page',
           );
         },
         child: const Icon(Icons.add),
