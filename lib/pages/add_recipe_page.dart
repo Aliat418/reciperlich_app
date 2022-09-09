@@ -1,5 +1,3 @@
-//not final page!!!
-
 import 'package:flutter/material.dart';
 
 import '../theme/colors.dart';
@@ -22,6 +20,13 @@ class _AddRecipePageState extends State<AddRecipePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'Add a new recipe',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.pastelPink,
       ),
@@ -45,98 +50,29 @@ class _AddRecipePageState extends State<AddRecipePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: TextField(
-                    maxLength: 50,
+                  child: InputTextField(
+                    maxLenth: 50,
                     maxLines: 2,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
+                    label: '⭐️ Recipe title: ',
                     controller: titleController,
-                    decoration: const InputDecoration(
-                      alignLabelWithHint: true,
-                      floatingLabelStyle: TextStyle(
-                        color: AppColors.darkPurple,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColors.pastelPink,
-                        ),
-                      ),
-                      labelText: 'Recipe Title:',
-                      labelStyle: TextStyle(
-                        color: AppColors.darkPurple,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.elliptical(15, 15),
-                        ),
-                        borderSide: BorderSide(
-                          color: AppColors.pastelPink,
-                          //width: 0,
-                        ),
-                      ),
-                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: TextField(
-                    maxLength: 500,
+                  child: InputTextField(
+                    maxLenth: 300,
                     maxLines: 7,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
+                    label: '🧂 Ingredients: ',
                     controller: ingredientsController,
-                    decoration: const InputDecoration(
-                      alignLabelWithHint: true,
-                      floatingLabelStyle: TextStyle(
-                        color: AppColors.darkPurple,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColors.pastelPink,
-                        ),
-                      ),
-                      labelText: '🧂 Ingredients: ',
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.elliptical(15, 15),
-                        ),
-                        borderSide: BorderSide(
-                          color: AppColors.pastelPink,
-                        ),
-                      ),
-                    ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: TextField(
-                    maxLength: 500,
-                    maxLines: 15,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
+                  padding: const EdgeInsets.only(bottom: 1),
+                  child: InputTextField(
+                    maxLenth: 700,
+                    maxLines: 10,
+                    label: ' 🥣 Instructions: ',
                     controller: instructionsController,
-                    decoration: const InputDecoration(
-                      floatingLabelStyle: TextStyle(
-                        color: AppColors.darkPurple,
-                      ),
-                      alignLabelWithHint: true,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.pastelPink),
-                      ),
-                      labelText: '🥣 Instructions: ',
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.elliptical(15, 15),
-                        ),
-                        borderSide: BorderSide(
-                          color: AppColors.pastelPink,
-                          //width: 0,
-                        ),
-                      ),
-                    ),
                   ),
                 ),
                 Padding(
@@ -158,6 +94,58 @@ class _AddRecipePageState extends State<AddRecipePage> {
                 const FooterWidget(),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class InputTextField extends StatelessWidget {
+  const InputTextField({
+    required this.controller,
+    required this.label,
+    required this.maxLenth,
+    required this.maxLines,
+    super.key,
+  });
+
+  final TextEditingController controller;
+  final String label;
+  final int maxLenth;
+  final int maxLines;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      maxLength: maxLenth,
+      maxLines: maxLines,
+      style: const TextStyle(
+        fontSize: 20,
+      ),
+      controller: controller,
+      decoration: InputDecoration(
+        alignLabelWithHint: true,
+        floatingLabelStyle: const TextStyle(
+          color: AppColors.darkPurple,
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.pastelPink,
+          ),
+        ),
+        labelText: label,
+        labelStyle: const TextStyle(
+          fontSize: 20,
+          color: AppColors.darkPurple,
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.elliptical(15, 15),
+          ),
+          borderSide: BorderSide(
+            color: AppColors.pastelPink,
+            //width: 0,
           ),
         ),
       ),

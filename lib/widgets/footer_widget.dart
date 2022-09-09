@@ -8,7 +8,6 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RichText(
           text: const TextSpan(

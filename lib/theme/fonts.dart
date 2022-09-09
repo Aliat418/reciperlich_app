@@ -2,6 +2,35 @@ import 'package:flutter/material.dart';
 
 import 'colors.dart';
 
+class CustomText extends StatelessWidget {
+  final double fontSize;
+  final String text;
+  final FontWeight fontWeight;
+  final Color color;
+  //final MainAxisAlignment mainAxisAlignment;
+
+  const CustomText({
+    required this.text,
+    required this.fontSize,
+    required this.fontWeight,
+    required this.color,
+    super.key,
+    // required this.mainAxisAlignment,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+      ),
+    );
+  }
+}
+
 class TitleText extends StatelessWidget {
   final String text;
 
