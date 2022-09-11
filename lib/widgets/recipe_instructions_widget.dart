@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/fonts.dart';
 
 class InstructionsWidget extends StatelessWidget {
-  final ingredients = DishRepository.getDishes();
   final Dish dish;
 
-  InstructionsWidget({
+  const InstructionsWidget({
     required this.dish,
     super.key,
   });

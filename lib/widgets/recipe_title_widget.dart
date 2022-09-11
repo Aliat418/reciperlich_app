@@ -20,7 +20,9 @@ class TitleWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TitleText(text: dish.title),
+          TitleText(
+            text: dish.title,
+          ),
         ],
       ),
     );

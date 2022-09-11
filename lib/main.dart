@@ -16,9 +16,9 @@ class ReciperlichApp extends StatelessWidget {
       title: 'ReciperlichApp',
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      home: MainFoodPage(),
+      home: const MainFoodPage(),
       routes: {
-        //MainFoodPage.routeName: (context) => MainFoodPage(),
+        MainFoodPage.routeName: (context) => const MainFoodPage(),
         AddRecipePage.routeName: (context) => const AddRecipePage(),
       },
       onGenerateRoute: (settings) {

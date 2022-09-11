@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../data/dishes_repository.dart';
+import '../model/dish.dart';
 import '../theme/colors.dart';
+import '../widgets/input_text_widget.dart';
 import '../widgets/footer_widget.dart';
 
 class AddRecipePage extends StatefulWidget {
@@ -15,6 +18,16 @@ class _AddRecipePageState extends State<AddRecipePage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController ingredientsController = TextEditingController();
   TextEditingController instructionsController = TextEditingController();
+  DishesRepo disheshRepo = DishesRepo();
+
+  void _refreshList() {
+    setState(() {});
+  }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,17 +89,67 @@ class _AddRecipePageState extends State<AddRecipePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(20),
                   child: Builder(
                     builder: (context) {
                       return ElevatedButton(
-                        onPressed: () => 'PRESSED',
+                        onPressed: () {
+                          late final newDish = Dish(
+                            title: titleController.text,
+                            purchasePlace: 'No purchace place',
+                            image: 'No icon',
+                            dishColor: AppColors.pastelGreen,
+                            ingredients: ingredientsController.text,
+                            instructions: instructionsController.text,
+                            dishImage: 'No image',
+                          );
+                          disheshRepo.insert(newDish);
+                          _refreshList();
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                backgroundColor: AppColors.pastelPink,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(15),
+                                  ),
+                                ),
+                                content: TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/main_food_page',
+                                    );
+                                  },
+                                  child: const Text(
+                                    'submmited',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
                         style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           backgroundColor: MaterialStateProperty.all<Color>(
                             AppColors.pastelPink,
                           ),
                         ),
-                        child: const Text('Submit recipe'),
+                        child: const Text(
+                          'Submit recipe',
+                        ),
                       );
                     },
                   ),
@@ -94,58 +157,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
                 const FooterWidget(),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class InputTextField extends StatelessWidget {
-  const InputTextField({
-    required this.controller,
-    required this.label,
-    required this.maxLenth,
-    required this.maxLines,
-    super.key,
-  });
-
-  final TextEditingController controller;
-  final String label;
-  final int maxLenth;
-  final int maxLines;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      maxLength: maxLenth,
-      maxLines: maxLines,
-      style: const TextStyle(
-        fontSize: 20,
-      ),
-      controller: controller,
-      decoration: InputDecoration(
-        alignLabelWithHint: true,
-        floatingLabelStyle: const TextStyle(
-          color: AppColors.darkPurple,
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.pastelPink,
-          ),
-        ),
-        labelText: label,
-        labelStyle: const TextStyle(
-          fontSize: 20,
-          color: AppColors.darkPurple,
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.elliptical(15, 15),
-          ),
-          borderSide: BorderSide(
-            color: AppColors.pastelPink,
-            //width: 0,
           ),
         ),
       ),
