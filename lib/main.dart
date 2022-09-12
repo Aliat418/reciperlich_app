@@ -32,7 +32,6 @@ class ReciperlichApp extends StatelessWidget {
             },
           );
         }
-        // assert(false, 'Need to implement recipe page arguments');???
         return null;
       },
     );

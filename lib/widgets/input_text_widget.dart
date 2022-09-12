@@ -49,7 +49,6 @@ class InputTextField extends StatelessWidget {
           ),
           borderSide: BorderSide(
             color: AppColors.pastelPink,
-            //width: 0,
           ),
         ),
       ),

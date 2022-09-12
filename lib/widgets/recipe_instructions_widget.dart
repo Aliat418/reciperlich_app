@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
+import '../theme/colors.dart';
 import '../theme/fonts.dart';
 
 class InstructionsWidget extends StatelessWidget {
@@ -19,8 +20,11 @@ class InstructionsWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: InstructionsText(
+            child: CustomText(
               text: '🥣 Instructions: ${dish.instructions}',
+              color: AppColors.darkPurple,
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
             ),
           ),
         ],

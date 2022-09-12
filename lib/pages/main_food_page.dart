@@ -17,13 +17,11 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
-  final DishesRepo disheshRepo = DishesRepo();
-  late final List<Dish> dishes = disheshRepo.getAll();
+  late final List<Dish> dishes = DishesRepo.getAll();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
+  void _refreshList() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +30,14 @@ class _MainFoodPageState extends State<MainFoodPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
         elevation: 3,
-        onPressed: () {
-          Navigator.pushNamed(
+        onPressed: () async {
+          final result = await Navigator.pushNamed(
             context,
             '/add_recipe_page',
           );
+          if (result != null) {
+            _refreshList();
+          }
         },
         child: const Icon(Icons.add),
       ),

@@ -14,8 +14,16 @@ class RecipeImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(dish.dishImage),
+        _buildImage(),
       ],
     );
+  }
+
+  Widget _buildImage() {
+    final localDishImage = dish.dishImage;
+    if (localDishImage != null) {
+      return Image.asset(localDishImage);
+    }
+    return const SizedBox.shrink();
   }
 }
