@@ -18,16 +18,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController ingredientsController = TextEditingController();
   TextEditingController instructionsController = TextEditingController();
-  DishesRepo disheshRepo = DishesRepo();
-
-  void _refreshList() {
-    setState(() {});
-  }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +86,13 @@ class _AddRecipePageState extends State<AddRecipePage> {
                         onPressed: () {
                           late final newDish = Dish(
                             title: titleController.text,
-                            purchasePlace: 'No purchace place',
-                            image: 'No icon',
+                            purchasePlace: 'No  place',
                             dishColor: AppColors.pastelGreen,
                             ingredients: ingredientsController.text,
                             instructions: instructionsController.text,
-                            dishImage: 'No image',
                           );
-                          disheshRepo.insert(newDish);
-                          _refreshList();
+                          DishesRepo.insert(newDish);
+                          Navigator.pop(context, newDish);
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -117,10 +105,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                                 ),
                                 content: TextButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      '/main_food_page',
-                                    );
+                                    Navigator.pop(context, newDish);
                                   },
                                   child: const Text(
                                     'submmited',
