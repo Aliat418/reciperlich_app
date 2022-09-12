@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../data/dishes_repository.dart';
 import '../model/dish.dart';
+import '../resources/images.dart';
 import '../theme/colors.dart';
+import '../utils/alert_dialogs.dart';
 import '../widgets/input_text_widget.dart';
 import '../widgets/footer_widget.dart';
 
 class AddRecipePage extends StatefulWidget {
   static const routeName = '/add_recipe_page';
+
   const AddRecipePage({super.key});
 
   @override
@@ -15,24 +18,22 @@ class AddRecipePage extends StatefulWidget {
 }
 
 class _AddRecipePageState extends State<AddRecipePage> {
-  TextEditingController titleController = TextEditingController();
-  TextEditingController ingredientsController = TextEditingController();
-  TextEditingController instructionsController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _ingredientsController = TextEditingController();
+  final TextEditingController _instructionsController = TextEditingController();
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _ingredientsController.dispose();
+    _instructionsController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Add a new recipe',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.pastelPink,
-      ),
+      appBar: _appBarMethod(),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
@@ -51,87 +52,41 @@ class _AddRecipePageState extends State<AddRecipePage> {
             ),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: InputTextField(
-                    maxLenth: 50,
-                    maxLines: 2,
-                    label: '⭐️ Recipe title: ',
-                    controller: titleController,
-                  ),
+                InputTextField(
+                  maxLenth: 35,
+                  maxLines: 1,
+                  label: '⭐️ Recipe title: ',
+                  controller: _titleController,
+                ),
+                InputTextField(
+                  maxLenth: 300,
+                  maxLines: 7,
+                  label: '🧂 Ingredients: ',
+                  controller: _ingredientsController,
+                ),
+                InputTextField(
+                  maxLenth: 700,
+                  maxLines: 10,
+                  label: ' 🥣 Instructions: ',
+                  controller: _instructionsController,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: InputTextField(
-                    maxLenth: 300,
-                    maxLines: 7,
-                    label: '🧂 Ingredients: ',
-                    controller: ingredientsController,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 1),
-                  child: InputTextField(
-                    maxLenth: 700,
-                    maxLines: 10,
-                    label: ' 🥣 Instructions: ',
-                    controller: instructionsController,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Builder(
                     builder: (context) {
                       return ElevatedButton(
                         onPressed: () {
-                          late final newDish = Dish(
-                            title: titleController.text,
-                            purchasePlace: 'No  place',
-                            dishColor: AppColors.pastelGreen,
-                            ingredients: ingredientsController.text,
-                            instructions: instructionsController.text,
-                          );
+                          late final newDish = _newDishMethod();
                           DishesRepo.insert(newDish);
                           Navigator.pop(context, newDish);
                           showDialog(
                             context: context,
                             builder: (context) {
-                              return AlertDialog(
-                                backgroundColor: AppColors.pastelPink,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                ),
-                                content: TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context, newDish);
-                                  },
-                                  child: const Text(
-                                    'submmited',
-                                    style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              );
+                              return SubmmitDialogWidget(newDish: newDish);
                             },
                           );
                         },
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            AppColors.pastelPink,
-                          ),
-                        ),
+                        style: _buttonStyleMethod(),
                         child: const Text(
                           'Submit recipe',
                         ),
@@ -144,6 +99,45 @@ class _AddRecipePageState extends State<AddRecipePage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Dish _newDishMethod() {
+    return Dish(
+      title: _titleController.text,
+      purchasePlace: 'No  place',
+      dishColor: AppColors.pastelGreen,
+      ingredients: _ingredientsController.text,
+      instructions: _instructionsController.text,
+      image: AppImages.pizza,
+      dishImage: AppImages.pizzaDish,
+    );
+  }
+
+  AppBar _appBarMethod() {
+    return AppBar(
+      title: const Text(
+        'Add a new recipe',
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      automaticallyImplyLeading: false,
+      backgroundColor: AppColors.pastelPink,
+    );
+  }
+
+  ButtonStyle _buttonStyleMethod() {
+    return ButtonStyle(
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      backgroundColor: MaterialStateProperty.all<Color>(
+        AppColors.pastelPink,
       ),
     );
   }
