@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../theme/colors.dart';
 
-class TopImageWidget extends StatelessWidget {
+class TopImageView extends StatelessWidget {
   final String image;
 
-  const TopImageWidget(
+  const TopImageView(
     this.image, {
     super.key,
   });

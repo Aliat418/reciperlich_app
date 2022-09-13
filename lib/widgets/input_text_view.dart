@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../theme/colors.dart';
 
-class InputTextField extends StatelessWidget {
+class InputTextView extends StatelessWidget {
   final TextEditingController controller;
   final String label;
   final int maxLenth;
   final int maxLines;
 
-  const InputTextField({
+  const InputTextView({
     required this.controller,
     required this.label,
     required this.maxLenth,
@@ -21,21 +21,18 @@ class InputTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: TextField(
-        onChanged: (text) {
-          text = text;
-        },
         maxLength: maxLenth,
         maxLines: maxLines,
         style: const TextStyle(
           fontSize: 20,
         ),
         controller: controller,
-        decoration: inputDecorMethod(),
+        decoration: _getInputDecor(),
       ),
     );
   }
 
-  InputDecoration inputDecorMethod() {
+  InputDecoration _getInputDecor() {
     return InputDecoration(
       alignLabelWithHint: true,
       floatingLabelStyle: const TextStyle(

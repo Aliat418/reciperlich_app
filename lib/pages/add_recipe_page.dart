@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../data/dishes_repository.dart';
-import '../model/dish.dart';
-import '../resources/images.dart';
 import '../theme/colors.dart';
-import '../utils/alert_dialogs.dart';
-import '../widgets/input_text_widget.dart';
-import '../widgets/footer_widget.dart';
+import '../theme/fonts.dart';
+import '../widgets/input_text_view.dart';
+import '../widgets/footer_view.dart';
+import '../widgets/submit_button_action.dart';
 
 class AddRecipePage extends StatefulWidget {
   static const routeName = '/add_recipe_page';
@@ -33,7 +31,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBarMethod(),
+      appBar: _builAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
@@ -48,53 +46,26 @@ class _AddRecipePageState extends State<AddRecipePage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 10,
-              horizontal: 20,
+              horizontal: 10,
             ),
             child: Column(
               children: [
-                InputTextField(
-                  maxLenth: 35,
-                  maxLines: 1,
-                  label: '⭐️ Recipe title: ',
-                  controller: _titleController,
-                ),
-                InputTextField(
-                  maxLenth: 300,
-                  maxLines: 7,
-                  label: '🧂 Ingredients: ',
-                  controller: _ingredientsController,
-                ),
-                InputTextField(
-                  maxLenth: 700,
-                  maxLines: 10,
-                  label: ' 🥣 Instructions: ',
-                  controller: _instructionsController,
-                ),
+                _buildInputTitle(),
+                _buildInputIngredients(),
+                _buildInstructions(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Builder(
                     builder: (context) {
-                      return ElevatedButton(
-                        onPressed: () {
-                          late final newDish = _newDishMethod();
-                          DishesRepo.insert(newDish);
-                          Navigator.pop(context, newDish);
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return SubmmitDialogWidget(newDish: newDish);
-                            },
-                          );
-                        },
-                        style: _buttonStyleMethod(),
-                        child: const Text(
-                          'Submit recipe',
-                        ),
+                      return SubmitButtonAction(
+                        titleController: _titleController,
+                        ingredientsController: _ingredientsController,
+                        instructionsController: _instructionsController,
                       );
                     },
                   ),
                 ),
-                const FooterWidget(),
+                const FooterView(),
               ],
             ),
           ),
@@ -103,42 +74,43 @@ class _AddRecipePageState extends State<AddRecipePage> {
     );
   }
 
-  Dish _newDishMethod() {
-    return Dish(
-      title: _titleController.text,
-      purchasePlace: 'No  place',
-      dishColor: AppColors.pastelGreen,
-      ingredients: _ingredientsController.text,
-      instructions: _instructionsController.text,
-      image: AppImages.pizza,
-      dishImage: AppImages.pizzaDish,
-    );
-  }
-
-  AppBar _appBarMethod() {
+  AppBar _builAppBar() {
     return AppBar(
-      title: const Text(
-        'Add a new recipe',
-        style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-        ),
+      title: const CustomText(
+        color: Colors.white,
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+        text: 'Add a new recipe',
       ),
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.pastelPink,
     );
   }
 
-  ButtonStyle _buttonStyleMethod() {
-    return ButtonStyle(
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-      backgroundColor: MaterialStateProperty.all<Color>(
-        AppColors.pastelPink,
-      ),
+  Widget _buildInputTitle() {
+    return InputTextView(
+      maxLenth: 35,
+      maxLines: 1,
+      label: '⭐️ Recipe title: ',
+      controller: _titleController,
+    );
+  }
+
+  Widget _buildInputIngredients() {
+    return InputTextView(
+      maxLenth: 300,
+      maxLines: 7,
+      label: '🧂 Ingredients: ',
+      controller: _ingredientsController,
+    );
+  }
+
+  Widget _buildInstructions() {
+    return InputTextView(
+      maxLenth: 700,
+      maxLines: 11,
+      label: ' 🥣 Instructions: ',
+      controller: _instructionsController,
     );
   }
 }

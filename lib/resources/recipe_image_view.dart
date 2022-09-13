@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
 
-class RecipeImageWidget extends StatelessWidget {
+class RecipeImageView extends StatelessWidget {
   final Dish dish;
 
-  const RecipeImageWidget({
+  const RecipeImageView({
     required this.dish,
     super.key,
   });

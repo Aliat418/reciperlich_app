@@ -4,9 +4,9 @@ import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../resources/images.dart';
 import '../theme/colors.dart';
-import '../widgets/appbar_widget.dart';
-import '../widgets/dish_view_widget.dart';
-import '../widgets/footer_widget.dart';
+import '../widgets/appbar_view_main.dart';
+import '../widgets/dish_view_main.dart';
+import '../widgets/footer_view.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -43,7 +43,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
       ),
       body: CustomScrollView(
         slivers: <Widget>[
-          const AppbarWidget(
+          const AppbarView(
             image: AppImages.appBarImage,
             text: 'Reciperlich',
           ),
@@ -61,7 +61,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           ),
           const SliverToBoxAdapter(
-            child: FooterWidget(),
+            child: FooterView(),
           ),
         ],
       ),

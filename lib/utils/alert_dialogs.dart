@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
 
-class SubmmitDialogWidget extends StatelessWidget {
+class SubmitDialog extends StatelessWidget {
   final Dish newDish;
 
-  const SubmmitDialogWidget({
+  const SubmitDialog({
     required this.newDish,
     super.key,
   });
@@ -14,11 +14,11 @@ class SubmmitDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(80),
+      insetPadding: const EdgeInsets.all(100),
       backgroundColor: AppColors.pastelPink,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.elliptical(110, 110),
+          Radius.circular(110),
         ),
       ),
       content: TextButton(
@@ -28,7 +28,7 @@ class SubmmitDialogWidget extends StatelessWidget {
         child: const Text(
           'submmited',
           style: TextStyle(
-            fontSize: 29,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),

@@ -4,10 +4,10 @@ import '../model/dish.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
 
-class TitleWidget extends StatelessWidget {
+class InstructionsView extends StatelessWidget {
   final Dish dish;
 
-  const TitleWidget({
+  const InstructionsView({
     required this.dish,
     super.key,
   });
@@ -15,17 +15,17 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.maxFinite,
-      padding: const EdgeInsets.all(15),
-      color: dish.dishColor,
+      padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomText(
-            text: dish.title,
-            color: AppColors.darkPurple,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+          Expanded(
+            child: CustomText(
+              text: '🥣 Instructions: ${dish.instructions}',
+              color: AppColors.darkPurple,
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
+            ),
           ),
         ],
       ),
