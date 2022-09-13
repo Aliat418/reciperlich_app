@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
 import '../model/dish.dart';
+import '../theme/colors.dart';
 import '../theme/fonts.dart';
 
-class TitleWidget extends StatelessWidget {
+class RecipeTitleView extends StatelessWidget {
   final Dish dish;
 
-  const TitleWidget({
+  const RecipeTitleView({
     required this.dish,
     super.key,
   });
@@ -19,7 +21,12 @@ class TitleWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TitleText(text: dish.title),
+          CustomText(
+            text: dish.title,
+            color: AppColors.darkPurple,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ],
       ),
     );

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+
 import '../theme/colors.dart';
-import '../widgets/footer_widget.dart';
+import '../widgets/footer_view.dart';
 import '../model/dish.dart';
-import '../resources/recipe_image_widget.dart';
-import '../widgets/recipe_instructions_widget.dart';
-import '../widgets/recipe_ingredients_widget.dart';
-import '../widgets/recipe_title_widget.dart';
+import '../resources/recipe_image_view.dart';
+import '../widgets/instructions_view.dart';
+import '../widgets/ingredients_view.dart';
+import '../widgets/recipe_title_view.dart';
 
 class RecipePage extends StatelessWidget {
   final Dish dish;
+  static const routeName = '/recipe_page';
 
   const RecipePage({
     required this.dish,
@@ -22,18 +24,18 @@ class RecipePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
         onPressed: () {
-          Navigator.of(context).pop();
+          Navigator.pop(context);
         },
         child: const Icon(Icons.arrow_back),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            RecipeImageWidget(dish: dish),
-            TitleWidget(dish: dish),
-            IngredientsWidget(dish: dish),
-            InstructionsWidget(dish: dish),
-            const FooterWidget(),
+            RecipeImageView(dish: dish),
+            RecipeTitleView(dish: dish),
+            IngredientsView(dish: dish),
+            InstructionsView(dish: dish),
+            const FooterView(),
           ],
         ),
       ),

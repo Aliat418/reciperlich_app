@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../data/dishes_repository.dart';
+
 import '../model/dish.dart';
+import '../theme/colors.dart';
 import '../theme/fonts.dart';
 
-class IngredientsWidget extends StatelessWidget {
+class InstructionsView extends StatelessWidget {
   final Dish dish;
-  final instructions = DishRepository.getDishes();
-  IngredientsWidget({
+
+  const InstructionsView({
     required this.dish,
     super.key,
   });
@@ -14,13 +15,16 @@ class IngredientsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: IngredientsText(
-              text: '🧂 Igredients: ${dish.ingredients}',
+            child: CustomText(
+              text: '🥣 Instructions: ${dish.instructions}',
+              color: AppColors.darkPurple,
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
             ),
           ),
         ],
