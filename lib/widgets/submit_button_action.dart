@@ -53,7 +53,7 @@ class SubmitButtonAction extends StatelessWidget {
     return ButtonStyle(
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(110),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       backgroundColor: MaterialStateProperty.all<Color>(

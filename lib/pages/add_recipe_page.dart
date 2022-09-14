@@ -90,7 +90,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
   Widget _buildInputTitle() {
     return InputTextView(
-      maxLenth: 35,
+      maxLenth: 25,
       maxLines: 1,
       label: '⭐️ Recipe title: ',
       controller: _titleController,

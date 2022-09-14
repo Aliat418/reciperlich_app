@@ -4,6 +4,7 @@ import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
+import 'delete_buttoton_action.dart';
 
 class DishView extends StatefulWidget {
   final Dish dish;
@@ -18,7 +19,7 @@ class DishView extends StatefulWidget {
 }
 
 class _DishViewState extends State<DishView> {
-  late final List<Dish> dishes = DishesRepo.getAll();
+  final List<Dish> dishes = DishesRepo.getAll();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class _DishViewState extends State<DishView> {
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.only(left: 20, right: 5),
+            padding: const EdgeInsets.only(left: 15, right: 10),
             decoration: BoxDecoration(
               color: widget.dish.dishColor,
               borderRadius: const BorderRadius.all(
@@ -66,32 +67,11 @@ class _DishViewState extends State<DishView> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    PopupMenuButton<int>(
-                      // position: PopupMenuPosition.under,
-                      itemBuilder: (context) => [
-                        PopupMenuItem(
-                          value: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [
-                              Icon(
-                                Icons.more_vert,
-                              ),
-                              // SizedBox(
-                              //   height: 10,
-                              //   width: 10,
-                              // ),
-                              Text('Delete recipe')
-                            ],
-                          ),
-                        ),
-                      ],
-                      offset: const Offset(100, 100),
-                      color: Colors.white,
-                      elevation: 2,
-                      onSelected: (value) {
-                        _showDialog(context);
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: DeleteButtonAction(
+                        dish: widget.dish,
+                      ),
                     ),
                   ],
                 ),
@@ -109,39 +89,5 @@ class _DishViewState extends State<DishView> {
       return Image.asset(localDishImage);
     }
     return const SizedBox.shrink();
-  }
-
-  void _showDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Alert!!'),
-          content: const Text('You are awesome!'),
-          actions: [
-            MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Column(
-                children: const [
-                  Text('Yes'),
-                ],
-              ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Column(
-                children: const [
-                  Text('No'),
-                ],
-              ),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
