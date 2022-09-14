@@ -31,7 +31,7 @@ class _DishViewState extends State<DishView> {
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 5),
             decoration: BoxDecoration(
               color: widget.dish.dishColor,
               borderRadius: const BorderRadius.all(
@@ -63,6 +63,38 @@ class _DishViewState extends State<DishView> {
                   ),
                 ),
                 _buildImage(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    PopupMenuButton<int>(
+                      // position: PopupMenuPosition.under,
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          value: 1,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: const [
+                              Icon(
+                                Icons.more_vert,
+                              ),
+                              // SizedBox(
+                              //   height: 10,
+                              //   width: 10,
+                              // ),
+                              Text('Delete recipe')
+                            ],
+                          ),
+                        ),
+                      ],
+                      offset: const Offset(100, 100),
+                      color: Colors.white,
+                      elevation: 2,
+                      onSelected: (value) {
+                        _showDialog(context);
+                      },
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -77,5 +109,39 @@ class _DishViewState extends State<DishView> {
       return Image.asset(localDishImage);
     }
     return const SizedBox.shrink();
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Alert!!'),
+          content: const Text('You are awesome!'),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Column(
+                children: const [
+                  Text('Yes'),
+                ],
+              ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Column(
+                children: const [
+                  Text('No'),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -35,6 +35,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
+        mini: true,
         onPressed: () {
           Navigator.pop(context);
         },
@@ -54,7 +55,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                 _buildInputIngredients(),
                 _buildInstructions(),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 25),
                   child: Builder(
                     builder: (context) {
                       return SubmitButtonAction(

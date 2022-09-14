@@ -14,7 +14,7 @@ class SubmitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(100),
+      insetPadding: const EdgeInsets.all(90),
       backgroundColor: AppColors.pastelPink,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -26,9 +26,9 @@ class SubmitDialog extends StatelessWidget {
           Navigator.pop(context, newDish);
         },
         child: const Text(
-          'submmited',
+          'submmitted',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
