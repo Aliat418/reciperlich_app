@@ -92,7 +92,7 @@ class DeleteDialog extends StatelessWidget {
     );
   }
 
-  MaterialButton _getNo(BuildContext context) {
+  Widget _getNo(BuildContext context) {
     return MaterialButton(
       onPressed: () {
         Navigator.of(context).pop();
@@ -106,7 +106,7 @@ class DeleteDialog extends StatelessWidget {
     );
   }
 
-  MaterialButton _getYes(BuildContext context) {
+  Widget _getYes(BuildContext context) {
     return MaterialButton(
       onPressed: () {
         final index = dishes.indexOf(dish);

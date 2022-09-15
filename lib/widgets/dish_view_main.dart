@@ -47,19 +47,9 @@ class _DishViewState extends State<DishView> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomText(
-                        text: widget.dish.title,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.darkPurple,
-                      ),
+                      _mainTitleText(),
                       const SizedBox(height: 5),
-                      CustomText(
-                        text: widget.dish.purchasePlace,
-                        color: AppColors.darkPurple,
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
+                      _mainPurchasePlace(),
                     ],
                   ),
                 ),
@@ -80,6 +70,24 @@ class _DishViewState extends State<DishView> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _mainPurchasePlace() {
+    return CustomText(
+      text: widget.dish.purchasePlace,
+      color: AppColors.darkPurple,
+      fontSize: 15,
+      fontWeight: FontWeight.normal,
+    );
+  }
+
+  Widget _mainTitleText() {
+    return CustomText(
+      text: widget.dish.title,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: AppColors.darkPurple,
     );
   }
 
