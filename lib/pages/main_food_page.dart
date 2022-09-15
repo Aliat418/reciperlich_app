@@ -17,55 +17,75 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
-  late final List<Dish> dishes = DishesRepo.getAll();
+  final repo = DishesRepo();
+  late Future<List<Dish>> dishes;
 
   void _refreshList() {
     setState(() {});
   }
 
   @override
+  void initState() {
+    dishes = repo.getAll();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.pastelPink,
-        mini: true,
-        elevation: 3,
-        onPressed: () async {
-          final result = await Navigator.pushNamed(
-            context,
-            '/add_recipe_page',
-          );
-          if (result != null) {
-            _refreshList();
-          }
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          const AppbarView(
-            image: AppImages.appBarImage,
-            text: 'Reciperlich',
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.all(20),
-            sliver: SliverFixedExtentList(
-              itemExtent: 115,
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: DishView(dish: dishes[index]),
-                ),
-                childCount: dishes.length,
-              ),
+    return FutureBuilder(
+      future: dishes,
+      builder: (BuildContext context, AsyncSnapshot<List<Dish>> snapshot) {
+        if (snapshot.hasData) {
+          return Scaffold(
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: AppColors.pastelPink,
+              mini: true,
+              elevation: 3,
+              onPressed: () async {
+                final result = await Navigator.pushNamed(
+                  context,
+                  '/add_recipe_page',
+                );
+                if (result != null) {
+                  _refreshList();
+                }
+              },
+              child: const Icon(Icons.add),
             ),
-          ),
-          const SliverToBoxAdapter(
-            child: FooterView(),
-          ),
-        ],
-      ),
+            body: CustomScrollView(
+              slivers: <Widget>[
+                const AppbarView(
+                  image: AppImages.appBarImage,
+                  text: 'Reciperlich',
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.all(20),
+                  sliver: SliverFixedExtentList(
+                    itemExtent: 115,
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: DishView(
+                          dish: snapshot.data![index],
+                          index: index,
+                        ),
+                      ),
+                      childCount: snapshot.data!.length,
+                    ),
+                  ),
+                ),
+                const SliverToBoxAdapter(
+                  child: FooterView(),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return const Scaffold();
+        }
+      },
     );
   }
 }
