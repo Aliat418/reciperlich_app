@@ -117,7 +117,6 @@ class DeleteDialog extends StatelessWidget {
       onPressed: () async {
         await repo.delete(index);
         unawaited(Navigator.pushNamed(context, '/main_food_page'));
-        print(index);
       },
       child: const Text(
         'Yes',

@@ -34,7 +34,7 @@ class SubmitButtonAction extends StatelessWidget {
           image: AppImages.pizza,
           dishImage: AppImages.pizzaDish,
         );
-        repo.insert(newDish);
+        DishesRepo.insert(newDish);
         Navigator.pop(context, newDish);
         showDialog(
           context: context,
