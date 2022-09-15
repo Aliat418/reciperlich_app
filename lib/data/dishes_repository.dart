@@ -3,7 +3,7 @@ import '../resources/images.dart';
 import '../theme/colors.dart';
 
 class DishesRepo {
-  DishesRepo._();
+  DishesRepo();
 
   static List<Dish> dataBase = [
     const Dish(
@@ -74,7 +74,7 @@ class DishesRepo {
     ),
   ];
 
-  static List<Dish> getAll() {
+  Future<List<Dish>> getAll() async {
     return dataBase;
   }
 
@@ -82,7 +82,7 @@ class DishesRepo {
     dataBase.add(dish);
   }
 
-  static void delete(int id) {
+  Future<void> delete(int id) async {
     dataBase.removeAt(id);
   }
 }

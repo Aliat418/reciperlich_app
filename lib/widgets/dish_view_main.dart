@@ -7,8 +7,10 @@ import 'delete_buttoton_action.dart';
 
 class DishView extends StatefulWidget {
   final Dish dish;
+  final int index;
 
   const DishView({
+    required this.index,
     required this.dish,
     super.key,
   });
@@ -58,6 +60,7 @@ class _DishViewState extends State<DishView> {
                       padding: const EdgeInsets.only(left: 10),
                       child: DeleteButtonAction(
                         dish: widget.dish,
+                        index: widget.index,
                       ),
                     ),
                   ],

@@ -6,9 +6,11 @@ import '../theme/fonts.dart';
 import '../utils/alert_dialogs.dart';
 
 class DeleteButtonAction extends StatelessWidget {
+  final int index;
   final Dish dish;
 
   const DeleteButtonAction({
+    required this.index,
     required this.dish,
     super.key,
   });
@@ -41,7 +43,7 @@ class DeleteButtonAction extends StatelessWidget {
       color: Colors.white,
       elevation: 15,
       onSelected: (value) {
-        _showDialog(context);
+        _showDialog(context, index);
       },
       child: const Icon(
         color: AppColors.mediumPurple,
@@ -50,12 +52,12 @@ class DeleteButtonAction extends StatelessWidget {
     );
   }
 
-  void _showDialog(BuildContext context) {
+  void _showDialog(BuildContext context, int index) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return DeleteDialog(
-          dish: dish,
+          index: index,
         );
       },
     );

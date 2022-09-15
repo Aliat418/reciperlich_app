@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../data/dishes_repository.dart';
@@ -55,11 +57,12 @@ class SubmitDialog extends StatelessWidget {
 }
 
 class DeleteDialog extends StatelessWidget {
-  final Dish dish;
-  final List<Dish> dishes = DishesRepo.getAll();
+  final int index;
+  final repo = DishesRepo();
 
   DeleteDialog({
-    required this.dish,
+    required this.index,
+    // required this.dish,
     super.key,
   });
 
@@ -84,7 +87,7 @@ class DeleteDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _getYes(context),
+            _getYes(context, index),
             _getNo(context),
           ],
         ),
@@ -106,12 +109,14 @@ class DeleteDialog extends StatelessWidget {
     );
   }
 
-  Widget _getYes(BuildContext context) {
+  Widget _getYes(
+    BuildContext context,
+    int index,
+  ) {
     return MaterialButton(
-      onPressed: () {
-        final index = dishes.indexOf(dish);
-        DishesRepo.delete(index);
-        Navigator.pushNamed(context, '/main_food_page');
+      onPressed: () async {
+        await repo.delete(index);
+        unawaited(Navigator.pushNamed(context, '/main_food_page'));
       },
       child: const Text(
         'Yes',

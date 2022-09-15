@@ -10,8 +10,9 @@ class SubmitButtonAction extends StatelessWidget {
   final TextEditingController _titleController;
   final TextEditingController _ingredientsController;
   final TextEditingController _instructionsController;
+  final repo = DishesRepo();
 
-  const SubmitButtonAction({
+  SubmitButtonAction({
     required TextEditingController titleController,
     required TextEditingController ingredientsController,
     required TextEditingController instructionsController,
