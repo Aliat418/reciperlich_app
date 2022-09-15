@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
@@ -19,8 +18,6 @@ class DishView extends StatefulWidget {
 }
 
 class _DishViewState extends State<DishView> {
-  final List<Dish> dishes = DishesRepo.getAll();
-
   @override
   Widget build(BuildContext context) {
     return InkWell(

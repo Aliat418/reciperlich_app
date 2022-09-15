@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
@@ -8,9 +7,8 @@ import '../utils/alert_dialogs.dart';
 
 class DeleteButtonAction extends StatelessWidget {
   final Dish dish;
-  final List<Dish> dishes = DishesRepo.getAll();
 
-  DeleteButtonAction({
+  const DeleteButtonAction({
     required this.dish,
     super.key,
   });
