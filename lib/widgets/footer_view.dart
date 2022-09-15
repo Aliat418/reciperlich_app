@@ -29,7 +29,7 @@ class FooterView extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 45,
+          height: 50,
         )
       ],
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
+import 'delete_buttoton_action.dart';
 
 class DishView extends StatefulWidget {
   final Dish dish;
@@ -18,8 +18,6 @@ class DishView extends StatefulWidget {
 }
 
 class _DishViewState extends State<DishView> {
-  late final List<Dish> dishes = DishesRepo.getAll();
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -31,7 +29,7 @@ class _DishViewState extends State<DishView> {
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 15, right: 10),
             decoration: BoxDecoration(
               color: widget.dish.dishColor,
               borderRadius: const BorderRadius.all(
@@ -46,28 +44,47 @@ class _DishViewState extends State<DishView> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomText(
-                        text: widget.dish.title,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.darkPurple,
-                      ),
+                      _mainTitleText(),
                       const SizedBox(height: 5),
-                      CustomText(
-                        text: widget.dish.purchasePlace,
-                        color: AppColors.darkPurple,
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
+                      _mainPurchasePlace(),
                     ],
                   ),
                 ),
                 _buildImage(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: DeleteButtonAction(
+                        dish: widget.dish,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _mainPurchasePlace() {
+    return CustomText(
+      text: widget.dish.purchasePlace,
+      color: AppColors.darkPurple,
+      fontSize: 15,
+      fontWeight: FontWeight.normal,
+    );
+  }
+
+  Widget _mainTitleText() {
+    return CustomText(
+      text: widget.dish.title,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: AppColors.darkPurple,
     );
   }
 

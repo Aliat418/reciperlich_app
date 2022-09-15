@@ -29,6 +29,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
+        mini: true,
         elevation: 3,
         onPressed: () async {
           final result = await Navigator.pushNamed(

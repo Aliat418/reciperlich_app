@@ -23,6 +23,7 @@ class RecipePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
+        mini: true,
         onPressed: () {
           Navigator.pop(context);
         },
