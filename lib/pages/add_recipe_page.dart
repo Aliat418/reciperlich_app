@@ -21,11 +21,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
   final TextEditingController _instructionsController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void dispose() {
     _titleController.dispose();
     _ingredientsController.dispose();
