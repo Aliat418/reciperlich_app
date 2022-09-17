@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'model/dish.dart';
 import 'pages/add_recipe_page.dart';
 import 'pages/main_food_page.dart';
 import 'pages/recipe_page.dart';
 
-void main() => runApp(const ReciperlichApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(DishAdapter());
+  runApp(const ReciperlichApp());
+}
 
 class ReciperlichApp extends StatelessWidget {
   const ReciperlichApp({super.key});

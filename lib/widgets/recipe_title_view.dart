@@ -17,7 +17,7 @@ class RecipeTitleView extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       padding: const EdgeInsets.all(15),
-      color: dish.dishColor,
+      color: Color(dish.dishColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

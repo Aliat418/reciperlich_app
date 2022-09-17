@@ -17,23 +17,14 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
-  final repo = DishesRepo();
-  late Future<List<Dish>> dishes;
-
   void _refreshList() {
     setState(() {});
   }
 
   @override
-  void initState() {
-    dishes = repo.getAll();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: dishes,
+      future: DishesRepo.getAll(),
       builder: (BuildContext context, AsyncSnapshot<List<Dish>> snapshot) {
         if (snapshot.hasData) {
           return Scaffold(
@@ -83,7 +74,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           );
         } else {
-          return const Scaffold();
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.pastelPink,
+            ),
+          );
         }
       },
     );
