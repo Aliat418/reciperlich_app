@@ -6,14 +6,12 @@ import '../resources/images.dart';
 import '../theme/colors.dart';
 import '../utils/alert_dialogs.dart';
 
-class SubmitButtonAction extends StatelessWidget {
+class SubmitButtonAction extends StatefulWidget {
   final TextEditingController _titleController;
   final TextEditingController _ingredientsController;
   final TextEditingController _instructionsController;
-  //final Box<Dish> box;
 
   const SubmitButtonAction({
-    // required this.box,
     required TextEditingController titleController,
     required TextEditingController ingredientsController,
     required TextEditingController instructionsController,
@@ -23,24 +21,29 @@ class SubmitButtonAction extends StatelessWidget {
         _instructionsController = instructionsController;
 
   @override
+  State<SubmitButtonAction> createState() => _SubmitButtonActionState();
+}
+
+class _SubmitButtonActionState extends State<SubmitButtonAction> {
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
         late final newDish = Dish(
-          title: _titleController.text,
-          purchasePlace: 'No  place',
-          dishColor: AppColors.pastelGreen,
-          ingredients: _ingredientsController.text,
-          instructions: _instructionsController.text,
+          title: widget._titleController.text,
+          purchasePlace: 'No place',
+          dishColor: AppColors.pastelGreen.value,
+          ingredients: widget._ingredientsController.text,
+          instructions: widget._instructionsController.text,
           image: AppImages.pizza,
           dishImage: AppImages.pizzaDish,
         );
-        // box
-        //   ..add(newDish)
-        //   ..put(newDish.title, newDish);
-        //     DishesRepo.insert(newDish);
+        await DishesRepo.insert(newDish);
+        if (!mounted) {
+          return;
+        }
         Navigator.pop(context, newDish);
-        showDialog(
+        await showDialog(
           context: context,
           builder: (context) {
             return SubmitDialog(

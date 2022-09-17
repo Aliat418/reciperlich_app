@@ -19,7 +19,7 @@ class DishAdapter extends TypeAdapter<Dish> {
     return Dish(
       title: fields[0] as String,
       purchasePlace: fields[1] as String,
-      dishColor: fields[3] as Color,
+      dishColor: fields[3] as int,
       ingredients: fields[4] as String,
       instructions: fields[5] as String,
       dishImage: fields[6] as String?,

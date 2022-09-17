@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
 import '../data/dishes_repository.dart';
 import '../model/dish.dart';
@@ -18,58 +17,14 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
-  final repo = DishesRepo();
-  late Future<List<Dish>> dishes;
-
-  //late Box<Dish> dishesBox;
-  Box<Dish> dishesBox = Hive.box<Dish>('boxDishes');
-
-  // _addInfo() async {
-  //   //  await box.put();
-  //   //  await box.put();
-  //   //print('Info added to box!');
-  // }
-
-  // _getInfo() {
-  //   final name = box.get('name');
-  //   final country = box.get('country');
-  //   //print('Info retrieved from box: $name ($country)');
-  // }
-
-  // _updateInfo() {
-  //   // box..put('name', 'Mike')
-  //   // ..put('country', 'United States');
-  //   //print('Info updated in box!');
-  // }
-
-  // _deleteInfo() {
-  //   box
-  //     ..delete('name')
-  //     ..delete('country');
-  //   //print('Info deleted from box!');
-  // }
-
   void _refreshList() {
     setState(() {});
   }
 
   @override
-  void initState() {
-    dishesBox = Hive.box('dishes');
-    // dishes = repo.getAll();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // Hive.close();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: dishes,
+      future: DishesRepo.getAll(),
       builder: (BuildContext context, AsyncSnapshot<List<Dish>> snapshot) {
         if (snapshot.hasData) {
           return Scaffold(

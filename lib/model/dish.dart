@@ -12,7 +12,7 @@ class Dish {
   @HiveField(2)
   final String? image;
   @HiveField(3)
-  final Color dishColor;
+  final int dishColor;
   @HiveField(4)
   final String ingredients;
   @HiveField(5)

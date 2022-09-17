@@ -33,7 +33,7 @@ class _DishViewState extends State<DishView> {
           Container(
             padding: const EdgeInsets.only(left: 15, right: 10),
             decoration: BoxDecoration(
-              color: widget.dish.dishColor,
+              color: Color(widget.dish.dishColor),
               borderRadius: const BorderRadius.all(
                 Radius.elliptical(15, 15),
               ),

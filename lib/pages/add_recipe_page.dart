@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
@@ -20,11 +19,9 @@ class _AddRecipePageState extends State<AddRecipePage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _ingredientsController = TextEditingController();
   final TextEditingController _instructionsController = TextEditingController();
-  late final Box box;
 
   @override
   void initState() {
-    box = Hive.box('dishesBox');
     super.initState();
   }
 

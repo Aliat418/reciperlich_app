@@ -5,16 +5,11 @@ import 'model/dish.dart';
 import 'pages/add_recipe_page.dart';
 import 'pages/main_food_page.dart';
 import 'pages/recipe_page.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final applicationDirDoc =
-      await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(applicationDirDoc.path);
   await Hive.initFlutter();
   Hive.registerAdapter(DishAdapter());
-  await Hive.openBox<Dish>('dishesBox');
   runApp(const ReciperlichApp());
 }
 
@@ -23,7 +18,6 @@ class ReciperlichApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Box<Dish> dishesBox;
     return MaterialApp(
       title: 'ReciperlichApp',
       theme: ThemeData.light(),
