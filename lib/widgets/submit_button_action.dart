@@ -10,9 +10,10 @@ class SubmitButtonAction extends StatelessWidget {
   final TextEditingController _titleController;
   final TextEditingController _ingredientsController;
   final TextEditingController _instructionsController;
-  final repo = DishesRepo();
+  //final Box<Dish> box;
 
-  SubmitButtonAction({
+  const SubmitButtonAction({
+    // required this.box,
     required TextEditingController titleController,
     required TextEditingController ingredientsController,
     required TextEditingController instructionsController,
@@ -34,12 +35,17 @@ class SubmitButtonAction extends StatelessWidget {
           image: AppImages.pizza,
           dishImage: AppImages.pizzaDish,
         );
-        DishesRepo.insert(newDish);
+        // box
+        //   ..add(newDish)
+        //   ..put(newDish.title, newDish);
+        //     DishesRepo.insert(newDish);
         Navigator.pop(context, newDish);
         showDialog(
           context: context,
           builder: (context) {
-            return SubmitDialog(newDish: newDish);
+            return SubmitDialog(
+              newDish: newDish,
+            );
           },
         );
       },

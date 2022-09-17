@@ -58,11 +58,9 @@ class SubmitDialog extends StatelessWidget {
 
 class DeleteDialog extends StatelessWidget {
   final int index;
-  final repo = DishesRepo();
 
-  DeleteDialog({
+  const DeleteDialog({
     required this.index,
-    // required this.dish,
     super.key,
   });
 
@@ -115,7 +113,7 @@ class DeleteDialog extends StatelessWidget {
   ) {
     return MaterialButton(
       onPressed: () async {
-        await repo.delete(index);
+        // await DishesRepo.delete(index);
         unawaited(Navigator.pushNamed(context, '/main_food_page'));
       },
       child: const Text(

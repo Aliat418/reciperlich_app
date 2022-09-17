@@ -1,11 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
 import '../model/dish.dart';
 import '../resources/images.dart';
 import '../theme/colors.dart';
 
 class DishesRepo {
   DishesRepo();
+  //Box box = Hive.box('dishes');
+  //var stringBox = await Hive.openBox<String>('name_of_the_box');
+  // var box = await Hive.openBox(name)
+  // Box<Dish> dishesBox = Hive.box('dishes');
 
-  static List<Dish> dataBase = [
+  // _getAll() async {
+  //   // Storing key-value pair
+  //   dishesBox.get(dataBase);
+  //   print(dishesBox);
+
+  Future<void> open() async {
+    var dishesBox = await Hive.openBox<Dish>('dishes');
+  }
+
+  final dishesBox = Hive.box('dishes');
+
+  // var dishesBox =  Hive.openBox<Dish>('dishes');
+  //dishesBox.addAll(values)
+
+  // Future<Future<int>> getAll() async {
+  //   await Hive.openBox<Dish>('dishesBox');
+  //   return dishesBox.;
+  // }
+//   Future<Box<Dish>> addit(){
+
+// }
+
+  List<Dish> dataBase = [
     const Dish(
       title: 'Pizza margherita',
       purchasePlace: 'Dominos Pizza',
@@ -74,12 +103,15 @@ class DishesRepo {
     ),
   ];
 
-  Future<List<Dish>> getAll() async {
-    return dataBase;
+  Future<Box> getAll() async {
+    // dishesBox.isOpen;
+    await dishesBox.put(int, Dish);
+    print(dishesBox);
+    return dishesBox;
   }
 
-  static void insert(Dish dish) {
-    dataBase.add(dish);
+  Future<void> insert(Dish dish) async {
+    //dishesBox.add(dish);
   }
 
   Future<void> delete(int id) async {
