@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../data/dishes_repository.dart';
 import '../model/dish.dart';
-import '../resources/images.dart';
 import '../theme/colors.dart';
 import '../utils/alert_dialogs.dart';
 
@@ -10,15 +9,18 @@ class SubmitButtonAction extends StatefulWidget {
   final TextEditingController _titleController;
   final TextEditingController _ingredientsController;
   final TextEditingController _instructionsController;
+  final String _image;
 
   const SubmitButtonAction({
     required TextEditingController titleController,
     required TextEditingController ingredientsController,
     required TextEditingController instructionsController,
+    required String image,
     super.key,
   })  : _titleController = titleController,
         _ingredientsController = ingredientsController,
-        _instructionsController = instructionsController;
+        _instructionsController = instructionsController,
+        _image = image;
 
   @override
   State<SubmitButtonAction> createState() => _SubmitButtonActionState();
@@ -32,11 +34,11 @@ class _SubmitButtonActionState extends State<SubmitButtonAction> {
         late final newDish = Dish(
           title: widget._titleController.text,
           purchasePlace: 'No place',
-          dishColor: AppColors.pastelGreen.value,
+          dishColor: AppColors.generateRandomColor().value,
           ingredients: widget._ingredientsController.text,
           instructions: widget._instructionsController.text,
-          image: AppImages.pizza,
-          dishImage: AppImages.pizzaDish,
+          image: widget._image,
+          dishImage: widget._image,
         );
         await DishesRepo.insert(newDish);
         if (!mounted) {

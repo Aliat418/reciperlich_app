@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -9,4 +11,11 @@ class AppColors {
   static const Color pastelGreen = Color(0x8ADCEDC1);
   static const Color pastelOrange = Color(0x8AFFD3C1);
   static const Color pastelPink = Color(0xFFffAAA5);
+  static const dishColors = [
+    AppColors.pastelOrange,
+    AppColors.pastelGreen,
+    AppColors.pastelBlue,
+  ];
+  static Color generateRandomColor() =>
+      dishColors[Random().nextInt(dishColors.length)];
 }

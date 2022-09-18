@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
+import '../resources/add_image_view.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart';
 import '../widgets/input_text_view.dart';
@@ -19,6 +22,8 @@ class _AddRecipePageState extends State<AddRecipePage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _ingredientsController = TextEditingController();
   final TextEditingController _instructionsController = TextEditingController();
+  final ImagePicker _imagePicker = ImagePicker();
+  String newImagePath = '';
 
   @override
   void dispose() {
@@ -26,6 +31,16 @@ class _AddRecipePageState extends State<AddRecipePage> {
     _ingredientsController.dispose();
     _instructionsController.dispose();
     super.dispose();
+  }
+
+  bool _isSubmButtonActive() {
+    if (newImagePath != '' &&
+        _titleController.text != '' &&
+        _ingredientsController.text != '' &&
+        _instructionsController.text != '') {
+      return true;
+    }
+    return false;
   }
 
   @override
@@ -45,12 +60,10 @@ class _AddRecipePageState extends State<AddRecipePage> {
         child: ColoredBox(
           color: Colors.white38,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
+                _buildImagePicker(),
                 _buildInputTitle(),
                 _buildInputIngredients(),
                 _buildInstructions(),
@@ -58,10 +71,14 @@ class _AddRecipePageState extends State<AddRecipePage> {
                   padding: const EdgeInsets.only(bottom: 25),
                   child: Builder(
                     builder: (context) {
-                      return SubmitButtonAction(
-                        titleController: _titleController,
-                        ingredientsController: _ingredientsController,
-                        instructionsController: _instructionsController,
+                      return Visibility(
+                        visible: _isSubmButtonActive(),
+                        child: SubmitButtonAction(
+                          titleController: _titleController,
+                          ingredientsController: _ingredientsController,
+                          instructionsController: _instructionsController,
+                          image: newImagePath,
+                        ),
                       );
                     },
                   ),
@@ -112,6 +129,54 @@ class _AddRecipePageState extends State<AddRecipePage> {
       maxLines: 11,
       label: ' 🥣 Instructions: ',
       controller: _instructionsController,
+    );
+  }
+
+  Widget _buildImagePicker() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+        horizontal: 10,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextButton(
+              onPressed: () async {
+                final newImage = await _imagePicker.pickImage(
+                  source: ImageSource.gallery,
+                );
+                if (newImage != null) {
+                  final sysDir = await getApplicationDocumentsDirectory();
+                  final newPath = '${sysDir.path}/${newImage.name}';
+                  await newImage.saveTo(newPath);
+                  setState(() {
+                    newImagePath = newPath;
+                  });
+                }
+              },
+              style: _getButtonStyle(),
+              child: AddImageView(newImagePath: newImagePath),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  ButtonStyle _getButtonStyle() {
+    return ButtonStyle(
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: const BorderSide(
+            color: AppColors.pastelPink,
+          ),
+        ),
+      ),
+      backgroundColor: MaterialStateProperty.all<Color>(
+        Colors.white,
+      ),
     );
   }
 }
