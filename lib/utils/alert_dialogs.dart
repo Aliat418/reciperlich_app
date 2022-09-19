@@ -27,14 +27,17 @@ class SubmitDialog extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context, newDish);
         },
-        child: const Text(
-          '🎉 submmitted 🎉',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: AppColors.pastelPink,
+        child: const Padding(
+          padding: EdgeInsets.all(10),
+          child: Text(
+            '🎉  SUBMMITED  🎉',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.pastelPink,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
       ),
     );
@@ -70,6 +73,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      insetPadding: const EdgeInsets.only(left: 70, right: 70),
       backgroundColor: Colors.white,
       titlePadding: const EdgeInsets.only(top: 25, bottom: 1),
       shape: const RoundedRectangleBorder(
@@ -126,6 +130,35 @@ class _DeleteDialogState extends State<DeleteDialog> {
         'Yes',
         style: TextStyle(
           color: AppColors.pastelPink,
+        ),
+      ),
+    );
+  }
+}
+
+class RequaredFieldsDialog extends StatelessWidget {
+  const RequaredFieldsDialog({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const AlertDialog(
+      insetPadding: EdgeInsets.all(80),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.elliptical(15, 15),
+        ),
+      ),
+      titlePadding: EdgeInsets.all(10),
+      title: Text(
+        'All fields required',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: AppColors.pastelPink,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

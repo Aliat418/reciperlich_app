@@ -27,32 +27,51 @@ class SubmitButtonAction extends StatefulWidget {
 }
 
 class _SubmitButtonActionState extends State<SubmitButtonAction> {
+  bool isSubmitActive() {
+    if (widget._image.isNotEmpty &&
+        widget._titleController.text.isNotEmpty &&
+        widget._ingredientsController.text.isNotEmpty &&
+        widget._instructionsController.text.isNotEmpty) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        late final newDish = Dish(
-          title: widget._titleController.text,
-          purchasePlace: 'No place',
-          dishColor: AppColors.generateRandomColor().value,
-          ingredients: widget._ingredientsController.text,
-          instructions: widget._instructionsController.text,
-          image: widget._image,
-          dishImage: widget._image,
-        );
-        await DishesRepo.insert(newDish);
-        if (!mounted) {
-          return;
+        if (isSubmitActive() == true) {
+          late final newDish = Dish(
+            title: widget._titleController.text,
+            purchasePlace: 'No place',
+            dishColor: AppColors.generateRandomColor().value,
+            ingredients: widget._ingredientsController.text,
+            instructions: widget._instructionsController.text,
+            image: widget._image,
+            dishImage: widget._image,
+          );
+          await DishesRepo.insert(newDish);
+          if (!mounted) {
+            return;
+          }
+          Navigator.pop(context, newDish);
+          await showDialog(
+            context: context,
+            builder: (context) {
+              return SubmitDialog(
+                newDish: newDish,
+              );
+            },
+          );
+        } else {
+          await showDialog(
+            context: context,
+            builder: (context) {
+              return const RequaredFieldsDialog();
+            },
+          );
         }
-        Navigator.pop(context, newDish);
-        await showDialog(
-          context: context,
-          builder: (context) {
-            return SubmitDialog(
-              newDish: newDish,
-            );
-          },
-        );
       },
       style: _getButtonStyle(),
       child: const Text(

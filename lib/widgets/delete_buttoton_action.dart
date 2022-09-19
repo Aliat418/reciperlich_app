@@ -20,7 +20,7 @@ class DeleteButtonAction extends StatelessWidget {
     return PopupMenuButton<int>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(90),
+          Radius.circular(15),
         ),
       ),
       itemBuilder: (context) => [
@@ -32,7 +32,7 @@ class DeleteButtonAction extends StatelessWidget {
             children: const [
               CustomText(
                 text: 'Delete recipe',
-                fontSize: 19,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: AppColors.pastelPink,
               ),

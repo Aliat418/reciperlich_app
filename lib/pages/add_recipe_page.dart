@@ -33,20 +33,10 @@ class _AddRecipePageState extends State<AddRecipePage> {
     super.dispose();
   }
 
-  bool _isSubmButtonActive() {
-    if (newImagePath != '' &&
-        _titleController.text != '' &&
-        _ingredientsController.text != '' &&
-        _instructionsController.text != '') {
-      return true;
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _builAppBar(),
+      appBar: _buildAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.pastelPink,
@@ -71,14 +61,11 @@ class _AddRecipePageState extends State<AddRecipePage> {
                   padding: const EdgeInsets.only(bottom: 25),
                   child: Builder(
                     builder: (context) {
-                      return Visibility(
-                        visible: _isSubmButtonActive(),
-                        child: SubmitButtonAction(
-                          titleController: _titleController,
-                          ingredientsController: _ingredientsController,
-                          instructionsController: _instructionsController,
-                          image: newImagePath,
-                        ),
+                      return SubmitButtonAction(
+                        titleController: _titleController,
+                        ingredientsController: _ingredientsController,
+                        instructionsController: _instructionsController,
+                        image: newImagePath,
                       );
                     },
                   ),
@@ -92,7 +79,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
     );
   }
 
-  AppBar _builAppBar() {
+  AppBar _buildAppBar() {
     return AppBar(
       title: const CustomText(
         color: Colors.white,
@@ -168,7 +155,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
     return ButtonStyle(
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           side: const BorderSide(
             color: AppColors.pastelPink,
           ),
