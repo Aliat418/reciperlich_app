@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
+import '../theme/fonts.dart';
 
 class SubmitDialog extends StatelessWidget {
   final Dish newDish;
@@ -29,13 +30,11 @@ class SubmitDialog extends StatelessWidget {
         },
         child: const Padding(
           padding: EdgeInsets.all(10),
-          child: Text(
-            '🎉  SUBMMITED  🎉',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.pastelPink,
-            ),
+          child: CustomText(
+            text: '🎉 SUBMITTED 🎉',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.pastelPink,
             textAlign: TextAlign.center,
           ),
         ),
@@ -81,12 +80,11 @@ class _DeleteDialogState extends State<DeleteDialog> {
           Radius.elliptical(15, 15),
         ),
       ),
-      title: const Text(
-        'Delete this recipe?',
+      title: const CustomText(
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: AppColors.mediumPurple,
-        ),
+        text: 'Delete this recipe?',
+        fontSize: 20,
+        color: AppColors.mediumPurple,
       ),
       actions: [
         Row(
@@ -105,11 +103,10 @@ class _DeleteDialogState extends State<DeleteDialog> {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      child: const Text(
-        'No',
-        style: TextStyle(
-          color: AppColors.mediumPurple,
-        ),
+      child: const CustomText(
+        text: 'No',
+        fontSize: 15,
+        color: AppColors.mediumPurple,
       ),
     );
   }
@@ -126,11 +123,10 @@ class _DeleteDialogState extends State<DeleteDialog> {
         }
         await Navigator.pushNamed(context, '/main_food_page');
       },
-      child: const Text(
-        'Yes',
-        style: TextStyle(
-          color: AppColors.pastelPink,
-        ),
+      child: const CustomText(
+        text: 'Yes',
+        fontSize: 15,
+        color: AppColors.pastelPink,
       ),
     );
   }
@@ -152,14 +148,12 @@ class RequaredFieldsDialog extends StatelessWidget {
         ),
       ),
       titlePadding: EdgeInsets.all(10),
-      title: Text(
-        'All fields required',
+      title: CustomText(
+        text: 'All fields required',
+        fontSize: 20,
+        color: AppColors.pastelPink,
+        fontWeight: FontWeight.bold,
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: AppColors.pastelPink,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
       ),
     );
   }

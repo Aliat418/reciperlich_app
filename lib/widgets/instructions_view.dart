@@ -22,9 +22,8 @@ class InstructionsView extends StatelessWidget {
           Expanded(
             child: CustomText(
               text: '🥣 Instructions: ${dish.instructions}',
-              color: AppColors.darkPurple,
+              color: AppColors.mediumPurple,
               fontSize: 20,
-              fontWeight: FontWeight.normal,
             ),
           ),
         ],

@@ -21,9 +21,11 @@ class InputTextView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: TextField(
+        cursorColor: AppColors.pastelPink,
         maxLength: maxLenth,
         maxLines: maxLines,
         style: const TextStyle(
+          color: AppColors.mediumPurple,
           fontSize: 20,
         ),
         controller: controller,
@@ -46,7 +48,7 @@ class InputTextView extends StatelessWidget {
       labelText: label,
       labelStyle: const TextStyle(
         fontSize: 20,
-        color: AppColors.darkPurple,
+        color: AppColors.mediumPurple,
       ),
       enabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(

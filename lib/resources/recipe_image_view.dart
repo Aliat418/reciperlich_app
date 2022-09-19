@@ -20,7 +20,7 @@ class RecipeImageView extends StatelessWidget {
   }
 
   Widget _buildImage() {
-    final localDishImage = dish.dishImage;
+    final localDishImage = dish.image;
     if (localDishImage != null) {
       return Image.asset(localDishImage);
     }

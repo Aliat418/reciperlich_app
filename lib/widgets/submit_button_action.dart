@@ -44,12 +44,10 @@ class _SubmitButtonActionState extends State<SubmitButtonAction> {
         if (isSubmitActive() == true) {
           late final newDish = Dish(
             title: widget._titleController.text,
-            purchasePlace: 'No place',
-            dishColor: AppColors.generateRandomColor().value,
+            dishColor: DishesColors.generateRandomColor().value,
             ingredients: widget._ingredientsController.text,
             instructions: widget._instructionsController.text,
             image: widget._image,
-            dishImage: widget._image,
           );
           await DishesRepo.insert(newDish);
           if (!mounted) {

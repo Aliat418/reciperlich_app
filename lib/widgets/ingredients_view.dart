@@ -25,7 +25,6 @@ class IngredientsView extends StatelessWidget {
               text: '🧂 Igredients: ${dish.ingredients}',
               color: AppColors.mediumPurple,
               fontSize: 18,
-              fontWeight: FontWeight.normal,
             ),
           ),
         ],

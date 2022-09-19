@@ -21,11 +21,14 @@ class RecipeTitleView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomText(
-            text: dish.title,
-            color: AppColors.darkPurple,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+          SizedBox(
+            width: 340,
+            child: CustomText(
+              textAlign: TextAlign.center,
+              text: dish.title,
+              fontSize: 20,
+              color: AppColors.darkPurple,
+            ),
           ),
         ],
       ),
