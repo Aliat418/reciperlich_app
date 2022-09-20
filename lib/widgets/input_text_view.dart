@@ -5,13 +5,13 @@ import '../theme/colors.dart';
 class InputTextView extends StatelessWidget {
   final TextEditingController controller;
   final String label;
-  final int maxLenth;
+  final int maxLength;
   final int maxLines;
 
   const InputTextView({
     required this.controller,
     required this.label,
-    required this.maxLenth,
+    required this.maxLength,
     required this.maxLines,
     super.key,
   });
@@ -22,11 +22,11 @@ class InputTextView extends StatelessWidget {
       padding: const EdgeInsets.all(6),
       child: TextField(
         cursorColor: AppColors.pastelPink,
-        maxLength: maxLenth,
+        maxLength: maxLength,
         maxLines: maxLines,
         style: const TextStyle(
-          color: AppColors.mediumPurple,
-          fontSize: 20,
+          color: AppColors.grey,
+          fontSize: 18,
         ),
         controller: controller,
         decoration: _getInputDecor(),
@@ -38,7 +38,7 @@ class InputTextView extends StatelessWidget {
     return InputDecoration(
       alignLabelWithHint: true,
       floatingLabelStyle: const TextStyle(
-        color: AppColors.darkPurple,
+        color: AppColors.grey,
       ),
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(
@@ -47,8 +47,8 @@ class InputTextView extends StatelessWidget {
       ),
       labelText: label,
       labelStyle: const TextStyle(
-        fontSize: 20,
-        color: AppColors.mediumPurple,
+        fontSize: 18,
+        color: AppColors.grey,
       ),
       enabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(

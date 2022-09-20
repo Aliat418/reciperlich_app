@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../resources/top_image_view.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
 
 class AppbarView extends StatelessWidget {
   final String image;
@@ -26,7 +26,6 @@ class AppbarView extends StatelessWidget {
       ),
       backgroundColor: AppColors.pastelPink,
       expandedHeight: 200,
-      elevation: 0,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         background: TopImageView(image),

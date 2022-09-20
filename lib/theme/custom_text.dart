@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
+
 class CustomText extends StatelessWidget {
   final double fontSize;
   final String text;
@@ -19,6 +21,7 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      selectionColor: AppColors.pastelPink,
       textAlign: textAlign,
       text,
       style: TextStyle(

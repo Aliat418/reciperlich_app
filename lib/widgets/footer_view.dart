@@ -15,14 +15,14 @@ class FooterView extends StatelessWidget {
               TextSpan(
                 text: 'Made with ❤️ by ',
                 style: TextStyle(
-                  color: AppColors.darkPurple,
+                  color: AppColors.grey,
                 ),
               ),
               TextSpan(
                 text: 'abrahadabra.ton',
                 style: TextStyle(
                   color: AppColors.darkGreen,
-                  fontStyle: FontStyle.italic,
+                  fontStyle: FontStyle.normal,
                 ),
               ),
             ],

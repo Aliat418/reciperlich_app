@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
 import '../utils/alert_dialogs.dart';
 
 class DeleteButtonAction extends StatelessWidget {
@@ -33,7 +33,6 @@ class DeleteButtonAction extends StatelessWidget {
               CustomText(
                 text: 'Delete recipe',
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
                 color: AppColors.pastelPink,
               ),
             ],
@@ -46,7 +45,7 @@ class DeleteButtonAction extends StatelessWidget {
         _showDialog(context, index);
       },
       child: const Icon(
-        color: AppColors.mediumPurple,
+        color: AppColors.grey,
         Icons.more_vert,
       ),
     );

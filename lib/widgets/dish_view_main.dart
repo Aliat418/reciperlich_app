@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -77,16 +79,21 @@ class _DishViewState extends State<DishView> {
         top: 5,
         bottom: 5,
       ),
-      child: AutoSizeText(
-        widget.dish.title,
-        minFontSize: 15,
-        maxFontSize: 20,
-        overflow: TextOverflow.fade,
-        style: const TextStyle(
-          fontSize: 20,
-          color: AppColors.mediumPurple,
-          fontWeight: FontWeight.normal,
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AutoSizeText(
+            widget.dish.title,
+            minFontSize: 15,
+            maxFontSize: 20,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.fade,
+            style: const TextStyle(
+              fontSize: 18,
+              color: AppColors.grey,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -94,7 +101,7 @@ class _DishViewState extends State<DishView> {
   Widget _buildImage() {
     final localDishImage = widget.dish.image;
     if (localDishImage != null) {
-      return Image.asset(localDishImage);
+      return Image.file(File(localDishImage));
     }
     return const SizedBox.shrink();
   }

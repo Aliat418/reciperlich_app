@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
 
 class SubmitDialog extends StatelessWidget {
   final Dish newDish;
@@ -16,7 +16,7 @@ class SubmitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(50),
+      insetPadding: const EdgeInsets.all(110),
       backgroundColor: Colors.transparent,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -31,9 +31,8 @@ class SubmitDialog extends StatelessWidget {
         child: const Padding(
           padding: EdgeInsets.all(10),
           child: CustomText(
-            text: '🎉 SUBMITTED 🎉',
+            text: 'Submitted',
             fontSize: 20,
-            fontWeight: FontWeight.bold,
             color: AppColors.pastelPink,
             textAlign: TextAlign.center,
           ),
@@ -84,7 +83,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
         textAlign: TextAlign.center,
         text: 'Delete this recipe?',
         fontSize: 20,
-        color: AppColors.mediumPurple,
+        color: AppColors.grey,
       ),
       actions: [
         Row(
@@ -106,7 +105,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
       child: const CustomText(
         text: 'No',
         fontSize: 15,
-        color: AppColors.mediumPurple,
+        color: AppColors.grey,
       ),
     );
   }
@@ -147,12 +146,11 @@ class RequaredFieldsDialog extends StatelessWidget {
           Radius.elliptical(15, 15),
         ),
       ),
-      titlePadding: EdgeInsets.all(10),
+      titlePadding: EdgeInsets.all(20),
       title: CustomText(
         text: 'All fields required',
-        fontSize: 20,
+        fontSize: 25,
         color: AppColors.pastelPink,
-        fontWeight: FontWeight.bold,
         textAlign: TextAlign.center,
       ),
     );

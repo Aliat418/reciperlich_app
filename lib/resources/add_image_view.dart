@@ -18,8 +18,8 @@ class AddImageView extends StatelessWidget {
         const Text(
           '🍜 Add image',
           style: TextStyle(
-            color: AppColors.darkPurple,
-            fontSize: 20,
+            color: AppColors.grey,
+            fontSize: 18,
             fontWeight: FontWeight.normal,
           ),
         ),

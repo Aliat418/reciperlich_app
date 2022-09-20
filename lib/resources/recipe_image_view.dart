@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
@@ -22,7 +24,7 @@ class RecipeImageView extends StatelessWidget {
   Widget _buildImage() {
     final localDishImage = dish.image;
     if (localDishImage != null) {
-      return Image.asset(localDishImage);
+      return Image.file(File(localDishImage));
     }
     return const SizedBox.shrink();
   }

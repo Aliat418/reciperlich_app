@@ -1,4 +1,4 @@
-name: reciperlich_app
+name: cook_book
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -32,3 +32,8 @@ flutter:
   uses-material-design: true
   assets:
   - assets/images/
+
+fonts:
+    - family: Inter
+      fonts:
+    - asset: fonts/Inter-VariableFont_slnt,wght.ttf

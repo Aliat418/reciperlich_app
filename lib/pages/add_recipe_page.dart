@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../data/dishes_repository.dart';
+import '../model/dish.dart';
 import '../resources/add_image_view.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
+import '../utils/alert_dialogs.dart';
 import '../widgets/input_text_view.dart';
 import '../widgets/footer_view.dart';
 import '../widgets/submit_button_action.dart';
@@ -58,14 +61,14 @@ class _AddRecipePageState extends State<AddRecipePage> {
                 _buildInputIngredients(),
                 _buildInstructions(),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 25),
+                  padding: const EdgeInsets.only(
+                    bottom: 20,
+                    top: 5,
+                  ),
                   child: Builder(
                     builder: (context) {
                       return SubmitButtonAction(
-                        titleController: _titleController,
-                        ingredientsController: _ingredientsController,
-                        instructionsController: _instructionsController,
-                        image: newImagePath,
+                        submit: _onSubmit,
                       );
                     },
                   ),
@@ -94,7 +97,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
   Widget _buildInputTitle() {
     return InputTextView(
-      maxLenth: 50,
+      maxLength: 50,
       maxLines: 2,
       label: '⭐️ Recipe title: ',
       controller: _titleController,
@@ -103,8 +106,8 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
   Widget _buildInputIngredients() {
     return InputTextView(
-      maxLenth: 300,
-      maxLines: 7,
+      maxLength: 300,
+      maxLines: 10,
       label: '🧂 Ingredients: ',
       controller: _ingredientsController,
     );
@@ -112,8 +115,8 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
   Widget _buildInstructions() {
     return InputTextView(
-      maxLenth: 700,
-      maxLines: 11,
+      maxLength: 700,
+      maxLines: 15,
       label: ' 🥣 Instructions: ',
       controller: _instructionsController,
     );
@@ -165,5 +168,47 @@ class _AddRecipePageState extends State<AddRecipePage> {
         Colors.white,
       ),
     );
+  }
+
+  bool isSubmitActive() {
+    if (newImagePath.isNotEmpty &&
+        _titleController.text.isNotEmpty &&
+        _ingredientsController.text.isNotEmpty &&
+        _instructionsController.text.isNotEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> _onSubmit() async {
+    if (isSubmitActive() == true) {
+      late final newDish = Dish(
+        title: _titleController.text,
+        dishColor: DishesColors.generateRandomColor().value,
+        ingredients: _ingredientsController.text,
+        instructions: _instructionsController.text,
+        image: newImagePath,
+      );
+      await DishesRepo.insert(newDish);
+      if (!mounted) {
+        return;
+      }
+      Navigator.pop(context, newDish);
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return SubmitDialog(
+            newDish: newDish,
+          );
+        },
+      );
+    } else {
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return const RequaredFieldsDialog();
+        },
+      );
+    }
   }
 }

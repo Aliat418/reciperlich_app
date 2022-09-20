@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
 
 class InstructionsView extends StatelessWidget {
   final Dish dish;
@@ -22,8 +22,8 @@ class InstructionsView extends StatelessWidget {
           Expanded(
             child: CustomText(
               text: '🥣 Instructions: ${dish.instructions}',
-              color: AppColors.mediumPurple,
-              fontSize: 20,
+              color: AppColors.grey,
+              fontSize: 18,
             ),
           ),
         ],
