@@ -16,7 +16,9 @@ class SubmitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(110),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 50,
+      ),
       backgroundColor: Colors.transparent,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -32,7 +34,7 @@ class SubmitDialog extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: CustomText(
             text: 'Submitted',
-            fontSize: 20,
+            fontSize: 25,
             color: AppColors.pastelPink,
             textAlign: TextAlign.center,
           ),
@@ -71,8 +73,9 @@ class _DeleteDialogState extends State<DeleteDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.only(left: 70, right: 70),
-      backgroundColor: Colors.white,
+      insetPadding: const EdgeInsets.symmetric(
+        horizontal: 70,
+      ),
       titlePadding: const EdgeInsets.only(top: 25, bottom: 1),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -139,14 +142,16 @@ class RequaredFieldsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AlertDialog(
-      insetPadding: EdgeInsets.all(80),
+      insetPadding: EdgeInsets.all(60),
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.elliptical(15, 15),
+          Radius.circular(10),
         ),
       ),
-      titlePadding: EdgeInsets.all(20),
+      titlePadding: EdgeInsets.symmetric(
+        vertical: 15,
+      ),
       title: CustomText(
         text: 'All fields required',
         fontSize: 25,

@@ -158,7 +158,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
     return ButtonStyle(
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
           side: const BorderSide(
             color: AppColors.pastelPink,
           ),

@@ -15,25 +15,26 @@ class SubmitButtonAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: _submit,
-      style: _getButtonStyle(),
-      child: const CustomText(
-        color: Colors.white,
-        fontSize: 20,
-        text: 'Submit recipe',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      child: SizedBox(
+        height: 50,
+        width: double.maxFinite,
+        child: ElevatedButton(
+          onPressed: _submit,
+          style: _getButtonStyle(),
+          child: const CustomText(
+            color: Colors.white,
+            fontSize: 20,
+            text: 'Submit recipe',
+          ),
+        ),
       ),
     );
   }
 
   ButtonStyle _getButtonStyle() {
     return ButtonStyle(
-      padding: MaterialStateProperty.all<EdgeInsets>(
-        const EdgeInsets.symmetric(
-          vertical: 15,
-          horizontal: 130,
-        ),
-      ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
