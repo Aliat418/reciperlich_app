@@ -101,7 +101,13 @@ class _DishViewState extends State<DishView> {
   Widget _buildImage() {
     final localDishImage = widget.dish.image;
     if (localDishImage != null) {
-      return Image.file(File(localDishImage));
+      if (localDishImage != localDishImage) {
+        return Image.file(
+          File(localDishImage),
+        );
+      } else {
+        return Image.asset('assets/images/no-image.png');
+      }
     }
     return const SizedBox.shrink();
   }
