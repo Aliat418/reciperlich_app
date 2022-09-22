@@ -22,16 +22,15 @@ class RecipeImageView extends StatelessWidget {
   }
 
   Widget _buildImage() {
-    final localDishImage = dish.image;
-    if (localDishImage != null) {
-      if (localDishImage != localDishImage) {
-        return Image.file(
-          File(localDishImage),
-        );
-      } else {
-        return Image.asset('assets/images/no-image.png');
-      }
+    final File localDishImage = File(dish.image!);
+    final bool isImageExcists = localDishImage.existsSync();
+
+    if (isImageExcists == true) {
+      return Image.file(
+        localDishImage,
+      );
+    } else {
+      return Image.asset('assets/images/no-image.png');
     }
-    return const SizedBox.shrink();
   }
 }
