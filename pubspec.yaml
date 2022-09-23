@@ -1,4 +1,4 @@
-name: reciperlich_app
+name: cook_book
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -16,6 +16,26 @@ dependencies:
   keyboard_actions: ^4.0.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  image_picker: ^0.8.5+3
+  path_provider: ^2.0.11
+  auto_size_text: ^3.0.0
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/spices.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/images/spices.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/spices.png"
+    icon_size: 48 
 
 dev_dependencies:
   flutter_test:
@@ -29,3 +49,8 @@ flutter:
   uses-material-design: true
   assets:
   - assets/images/
+
+fonts:
+    - family: Inter
+      fonts:
+    - asset: fonts/Inter-VariableFont_slnt,wght.ttf

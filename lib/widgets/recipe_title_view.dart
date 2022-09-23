@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
 
 class RecipeTitleView extends StatelessWidget {
   final Dish dish;
@@ -21,11 +21,14 @@ class RecipeTitleView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomText(
-            text: dish.title,
-            color: AppColors.darkPurple,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+          SizedBox(
+            width: 340,
+            child: CustomText(
+              textAlign: TextAlign.center,
+              text: dish.title,
+              fontSize: 18,
+              color: AppColors.grey,
+            ),
           ),
         ],
       ),

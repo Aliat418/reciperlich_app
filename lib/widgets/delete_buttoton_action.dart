@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../model/dish.dart';
 import '../theme/colors.dart';
-import '../theme/fonts.dart';
+import '../theme/custom_text.dart';
 import '../utils/alert_dialogs.dart';
 
 class DeleteButtonAction extends StatelessWidget {
@@ -20,7 +20,7 @@ class DeleteButtonAction extends StatelessWidget {
     return PopupMenuButton<int>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(90),
+          Radius.circular(15),
         ),
       ),
       itemBuilder: (context) => [
@@ -32,8 +32,7 @@ class DeleteButtonAction extends StatelessWidget {
             children: const [
               CustomText(
                 text: 'Delete recipe',
-                fontSize: 19,
-                fontWeight: FontWeight.bold,
+                fontSize: 20,
                 color: AppColors.pastelPink,
               ),
             ],
@@ -46,7 +45,7 @@ class DeleteButtonAction extends StatelessWidget {
         _showDialog(context, index);
       },
       child: const Icon(
-        color: AppColors.mediumPurple,
+        color: AppColors.grey,
         Icons.more_vert,
       ),
     );

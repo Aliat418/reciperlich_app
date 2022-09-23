@@ -19,8 +19,11 @@ class ReciperlichApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ReciperlichApp',
-      theme: ThemeData.light(),
+      title: 'CookBook',
+      theme: ThemeData(
+        fontFamily: 'Inter',
+        primaryColor: Colors.white,
+      ),
       debugShowCheckedModeBanner: false,
       home: const MainFoodPage(),
       routes: {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/dishes_repository.dart';
 import '../model/dish.dart';
 import '../theme/colors.dart';
+import '../theme/custom_text.dart';
 
 class SubmitDialog extends StatelessWidget {
   final Dish newDish;
@@ -15,7 +16,9 @@ class SubmitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(50),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 50,
+      ),
       backgroundColor: Colors.transparent,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -27,14 +30,14 @@ class SubmitDialog extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context, newDish);
         },
-        child: const Text(
-          '🎉 submmitted 🎉',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
+        child: const Padding(
+          padding: EdgeInsets.all(10),
+          child: CustomText(
+            text: 'Submitted',
+            fontSize: 25,
             color: AppColors.pastelPink,
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
       ),
     );
@@ -70,19 +73,20 @@ class _DeleteDialogState extends State<DeleteDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.white,
+      insetPadding: const EdgeInsets.symmetric(
+        horizontal: 70,
+      ),
       titlePadding: const EdgeInsets.only(top: 25, bottom: 1),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.elliptical(15, 15),
         ),
       ),
-      title: const Text(
-        'Delete this recipe?',
+      title: const CustomText(
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: AppColors.mediumPurple,
-        ),
+        text: 'Delete this recipe?',
+        fontSize: 20,
+        color: AppColors.grey,
       ),
       actions: [
         Row(
@@ -101,11 +105,10 @@ class _DeleteDialogState extends State<DeleteDialog> {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      child: const Text(
-        'No',
-        style: TextStyle(
-          color: AppColors.mediumPurple,
-        ),
+      child: const CustomText(
+        text: 'No',
+        fontSize: 15,
+        color: AppColors.grey,
       ),
     );
   }
@@ -122,11 +125,38 @@ class _DeleteDialogState extends State<DeleteDialog> {
         }
         await Navigator.pushNamed(context, '/main_food_page');
       },
-      child: const Text(
-        'Yes',
-        style: TextStyle(
-          color: AppColors.pastelPink,
+      child: const CustomText(
+        text: 'Yes',
+        fontSize: 15,
+        color: AppColors.pastelPink,
+      ),
+    );
+  }
+}
+
+class RequaredFieldsDialog extends StatelessWidget {
+  const RequaredFieldsDialog({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const AlertDialog(
+      insetPadding: EdgeInsets.all(60),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
         ),
+      ),
+      titlePadding: EdgeInsets.symmetric(
+        vertical: 15,
+      ),
+      title: CustomText(
+        text: 'All fields required',
+        fontSize: 25,
+        color: AppColors.pastelPink,
+        textAlign: TextAlign.center,
       ),
     );
   }

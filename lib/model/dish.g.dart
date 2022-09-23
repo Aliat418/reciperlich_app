@@ -18,11 +18,9 @@ class DishAdapter extends TypeAdapter<Dish> {
     };
     return Dish(
       title: fields[0] as String,
-      purchasePlace: fields[1] as String,
       dishColor: fields[3] as int,
       ingredients: fields[4] as String,
       instructions: fields[5] as String,
-      dishImage: fields[6] as String?,
       image: fields[2] as String?,
     );
   }
@@ -30,11 +28,9 @@ class DishAdapter extends TypeAdapter<Dish> {
   @override
   void write(BinaryWriter writer, Dish obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.title)
-      ..writeByte(1)
-      ..write(obj.purchasePlace)
       ..writeByte(2)
       ..write(obj.image)
       ..writeByte(3)
@@ -42,9 +38,7 @@ class DishAdapter extends TypeAdapter<Dish> {
       ..writeByte(4)
       ..write(obj.ingredients)
       ..writeByte(5)
-      ..write(obj.instructions)
-      ..writeByte(6)
-      ..write(obj.dishImage);
+      ..write(obj.instructions);
   }
 
   @override

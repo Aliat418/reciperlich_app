@@ -29,7 +29,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
         if (snapshot.hasData) {
           return Scaffold(
             floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
+                FloatingActionButtonLocation.startDocked,
             floatingActionButton: FloatingActionButton(
               backgroundColor: AppColors.pastelPink,
               mini: true,
@@ -49,7 +49,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               slivers: <Widget>[
                 const AppbarView(
                   image: AppImages.appBarImage,
-                  text: 'Reciperlich',
+                  text: 'CookBook',
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(20),

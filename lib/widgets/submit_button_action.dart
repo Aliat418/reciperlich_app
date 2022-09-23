@@ -1,60 +1,34 @@
 import 'package:flutter/material.dart';
 
-import '../data/dishes_repository.dart';
-import '../model/dish.dart';
-import '../resources/images.dart';
 import '../theme/colors.dart';
-import '../utils/alert_dialogs.dart';
+import '../theme/custom_text.dart';
 
-class SubmitButtonAction extends StatefulWidget {
-  final TextEditingController _titleController;
-  final TextEditingController _ingredientsController;
-  final TextEditingController _instructionsController;
+typedef SubmitFunction = void Function();
+
+class SubmitButtonAction extends StatelessWidget {
+  final SubmitFunction _submit;
 
   const SubmitButtonAction({
-    required TextEditingController titleController,
-    required TextEditingController ingredientsController,
-    required TextEditingController instructionsController,
+    required Function() submit,
     super.key,
-  })  : _titleController = titleController,
-        _ingredientsController = ingredientsController,
-        _instructionsController = instructionsController;
+  }) : _submit = submit;
 
-  @override
-  State<SubmitButtonAction> createState() => _SubmitButtonActionState();
-}
-
-class _SubmitButtonActionState extends State<SubmitButtonAction> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () async {
-        late final newDish = Dish(
-          title: widget._titleController.text,
-          purchasePlace: 'No place',
-          dishColor: AppColors.pastelGreen.value,
-          ingredients: widget._ingredientsController.text,
-          instructions: widget._instructionsController.text,
-          image: AppImages.pizza,
-          dishImage: AppImages.pizzaDish,
-        );
-        await DishesRepo.insert(newDish);
-        if (!mounted) {
-          return;
-        }
-        Navigator.pop(context, newDish);
-        await showDialog(
-          context: context,
-          builder: (context) {
-            return SubmitDialog(
-              newDish: newDish,
-            );
-          },
-        );
-      },
-      style: _getButtonStyle(),
-      child: const Text(
-        'Submit recipe',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      child: SizedBox(
+        height: 50,
+        width: double.maxFinite,
+        child: ElevatedButton(
+          onPressed: _submit,
+          style: _getButtonStyle(),
+          child: const CustomText(
+            color: Colors.white,
+            fontSize: 20,
+            text: 'Submit recipe',
+          ),
+        ),
       ),
     );
   }
@@ -64,6 +38,9 @@ class _SubmitButtonActionState extends State<SubmitButtonAction> {
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
+          side: const BorderSide(
+            color: AppColors.pastelPink,
+          ),
         ),
       ),
       backgroundColor: MaterialStateProperty.all<Color>(
